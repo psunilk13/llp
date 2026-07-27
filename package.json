@@ -1,0 +1,17 @@
+{
+  "name": "llp_dashboard",
+  "version": "1.0.0",
+  "description": "Llp Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "echarts": "^6.1.0",
+    "tslib": "^2.8.1",
+    "zrender": "^6.1.0"
+  }
+}
