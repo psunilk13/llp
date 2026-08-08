@@ -26,6 +26,9 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/llp_dashboard/css/llp_dashboard.css"
+app_include_js = [
+    "/assets/llp_dashboard/js/echarts.min.js"
+]
 # app_include_js = "/assets/llp_dashboard/js/llp_dashboard.js"
 
 # include js, css files in header of web template
@@ -137,13 +140,16 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
+doc_events = {
 # 	"*": {
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
-# 	}
-# }
+# 	},
+    "Page": { 
+         "after_insert": "llp_dashboard.utils.create_page_files"
+        }
+    }
 
 # Scheduled Tasks
 # ---------------
