@@ -1,0 +1,356 @@
+/* ==========================================================================
+   GLOBAL INPUT FIELDS & MATERIAL BORDER ANIMATION
+   ========================================================================== */
+
+/* Standard Global Inputs */
+body .form-control {
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 4px !important;
+    background-color: #FFFFFF !important;
+    color: #1A202C !important;
+
+    /* Bottom border filling transition trick via background-size */
+    background-image: linear-gradient(#0072CE, #0072CE) !important;
+    background-position: center bottom !important;
+    background-size: 0% 1px !important;
+    background-repeat: no-repeat !important;
+
+    /* Smooth transitions for the filling border and border color */
+    transition: background-size 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease !important;
+}
+
+body .form-control:focus {
+    /* Fills the bottom border from center to 100% width */
+    background-size: 100% 2px !important;
+    border-color: #0072CE !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Global Placeholder Text */
+body .form-control::placeholder {
+    color: #94A3B8 !important;
+    /* Soft grey color for placeholders globally */
+}
+
+/* 
+   IMPORTANT OVERRIDES
+   Do not apply the white background and blue filling border to the Dark Desk Sidebar
+   or the Sidebar Dropdowns since we explicitly styled those in llp_desk_theme.css!
+*/
+body .layout-side-section .form-control {
+    background-image: none !important;
+}
+
+body>.dropdown-menu .form-control {
+    background-image: none !important;
+}
+
+/* ==========================================================================
+   GLOBAL MODAL DIALOGS
+   ========================================================================== */
+body .modal-content {
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 16px 40px rgba(3, 24, 53, 0.3) !important;
+    overflow: hidden !important;
+}
+
+body .modal-header {
+    background-color: #F8FAFC !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding: 16px 24px !important;
+}
+
+body .modal-title {
+    color: #031835 !important;
+    font-weight: 600 !important;
+    font-size: 1.15rem !important;
+}
+
+body .modal-body {
+    padding: 24px !important;
+    background-color: #FFFFFF !important;
+}
+
+body .modal-footer {
+    background-color: #F8FAFC !important;
+    border-top: 1px solid #E2E8F0 !important;
+    padding: 16px 24px !important;
+}
+
+/* Standardize Global Modal Buttons */
+body .modal-footer .btn {
+    border-radius: 4px !important;
+    font-weight: 500 !important;
+    padding: 8px 16px !important;
+    transition: all 0.2s ease !important;
+}
+
+body .modal-footer .btn-primary {
+    background-color: #0072CE !important;
+    border-color: #0072CE !important;
+    color: #FFFFFF !important;
+}
+
+body .modal-footer .btn-primary:hover {
+    background-color: #061f42 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ==========================================================================
+   FORM TABS (Material Style)
+   ========================================================================== */
+body .form-tabs-list {
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+
+body .form-tabs-list .nav-link,
+body .form-tabs-list .nav-item>a {
+    color: #64748B !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    transition: color 0.2s ease, border-color 0.2s ease !important;
+}
+
+body .form-tabs-list .nav-link:hover,
+body .form-tabs-list .nav-item>a:hover {
+    color: #0072CE !important;
+    background-color: rgba(0, 114, 206, 0.05) !important;
+}
+
+body .form-tabs-list .nav-link.active,
+body .form-tabs-list .nav-item.active>.nav-link,
+body .form-tabs-list .active {
+    color: #0072CE !important;
+    border-bottom: 2px solid #0072CE !important;
+    background-color: transparent !important;
+}
+
+/* ==========================================================================
+   CHILD TABLE GRID HEADER & LIST VIEW HEADER
+   ========================================================================== */
+body .grid-heading-row,
+body .list-row-head {
+    background-color: #003B73 !important;
+    /* Navbar's blue background */
+    border-radius: 4px 4px 0 0 !important;
+}
+
+body .grid-heading-row,
+body .grid-heading-row *,
+body .grid-heading-row svg,
+body .list-row-head,
+body .list-row-head *,
+body .list-row-head svg {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+
+/* Specific styling for the settings gear icon in grid header */
+body .grid-heading-row svg.icon-setting-gear {
+    filter: brightness(0) invert(1) !important;
+}
+
+/* ==========================================================================
+   LIST VIEW FILTER & SORT BUTTONS
+   ========================================================================== */
+body .filter-section .btn-group {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 4px !important;
+}
+
+body .filter-section .btn-group .btn {
+    border: 1px solid #0072CE !important;
+    /* Default blue border */
+    background-color: #FFFFFF !important;
+    color: #0072CE !important;
+    /* Match text and icons to the border color */
+    font-weight: 500 !important;
+    border-radius: 0 !important;
+    /* Flat edges for grouped buttons */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 4px Border Radius on the outer edges of the button group */
+body .filter-section .btn-group .btn:first-child {
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+}
+
+body .filter-section .btn-group .btn:last-child {
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+}
+
+body .filter-section .btn-group .btn:hover {
+    background-color: #F8FAFC !important;
+    border-color: #0072CE !important;
+    color: #0072CE !important;
+    z-index: 2 !important;
+    /* Bring hovered button's border to the front */
+    box-shadow: 0 2px 6px rgba(0, 114, 206, 0.15) !important;
+}
+
+body .filter-section .btn-group .btn-primary-light,
+body .filter-section .btn-group .filter-button.btn-primary-light {
+    background-color: rgba(0, 114, 206, 0.1) !important;
+    border-color: #0072CE !important;
+    color: #0072CE !important;
+}
+
+body .filter-section .btn-group .btn-primary-light:hover {
+    background-color: rgba(0, 114, 206, 0.15) !important;
+}
+
+/* Fix SVG colors inside filter/sort buttons so ascending/descending icons show properly */
+body .filter-section .btn-group .btn svg,
+body .filter-section .btn-group .btn svg use,
+body .filter-section .sort-selector .btn-order svg,
+body .filter-section .sort-selector .btn-order svg use {
+    fill: #0072CE !important;
+    stroke: #0072CE !important;
+    color: #0072CE !important;
+}
+
+/* Remove default focus outlines that Frappe might apply */
+body .filter-section .btn-group .btn:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(0, 114, 206, 0.2) !important;
+    border-color: #0072CE !important;
+}
+
+/* Active filter label chip */
+body .filter-section .filter-label {
+    background-color: #1E40AF !important;
+    /* Top nav color */
+    color: #FFFFFF !important;
+    border-radius: 4px !important;
+    /* Changed to 4px as requested */
+    padding: 6px 6px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    margin-left: 4px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+}
+
+/* ==========================================================================
+   FILTER SECTION DROPDOWNS (e.g. Sort Selector)
+   ========================================================================== */
+body .filter-section .dropdown-menu {
+    background-color: #FFFFFF !important;
+    /* White dropdown like Awesomplete */
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+    padding: 8px 0 !important;
+}
+
+body .filter-section .dropdown-menu .dropdown-item,
+body .filter-section .dropdown-menu .dropdown-item * {
+    color: #1A202C !important;
+    /* Dark text */
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Hover state matching the attached Awesomplete screenshot */
+body .filter-section .dropdown-menu .dropdown-item:hover,
+body .filter-section .dropdown-menu .dropdown-item:focus {
+    background-color: #031835 !important;
+    /* Dark blue background */
+    color: #FFFFFF !important;
+    /* White text */
+}
+
+body .filter-section .dropdown-menu .dropdown-item:hover *,
+body .filter-section .dropdown-menu .dropdown-item:focus * {
+    color: #FFFFFF !important;
+    /* Ensure icons and text turn white */
+    fill: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   USER PROFILE SIDEBAR & PAGE HEAD ICONS
+   ========================================================================== */
+body .user-profile-sidebar,
+body .user-profile-sidebar h5,
+body .user-profile-sidebar .stat-value,
+body .user-profile-sidebar .stat-label,
+body .user-profile-sidebar p,
+body .user-profile-sidebar a {
+    color: #FFFFFF !important;
+}
+
+body .user-profile-sidebar svg,
+body .user-profile-sidebar svg use,
+body .page-head .page-actions svg,
+body .page-head .page-actions svg use {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+
+body .user-profile-sidebar a:hover {
+    color: #0072CE !important; /* Slightly blue on hover for links */
+}
+
+/* ==========================================================================
+   STANDARD SIDEBAR ITEMS (e.g. Leaderboard, Users, Customers)
+   ========================================================================== */
+body .standard-sidebar-item {
+    border-radius: 8px !important;
+    margin-bottom: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 6px 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important; /* Fix the gap between icon and text */
+    border: 1px solid transparent !important;
+}
+
+body .standard-sidebar-item a.sidebar-link,
+body .standard-sidebar-item a.sidebar-link *,
+body .standard-sidebar-item > span svg,
+body .standard-sidebar-item > span i {
+    color: #CBD5E1 !important; /* Muted text by default */
+    fill: #CBD5E1 !important;
+    stroke: #CBD5E1 !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+}
+
+/* Hover & Active / Selected State - Translucent Glass White to match desk sidebar */
+body .standard-sidebar-item:hover,
+body .standard-sidebar-item.active,
+body .standard-sidebar-item.selected {
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    box-shadow: none !important;
+}
+
+body .standard-sidebar-item:hover a.sidebar-link,
+body .standard-sidebar-item:hover a.sidebar-link *,
+body .standard-sidebar-item:hover > span svg,
+body .standard-sidebar-item:hover > span i,
+body .standard-sidebar-item.active a.sidebar-link,
+body .standard-sidebar-item.active a.sidebar-link *,
+body .standard-sidebar-item.active > span svg,
+body .standard-sidebar-item.active > span i,
+body .standard-sidebar-item.selected a.sidebar-link,
+body .standard-sidebar-item.selected a.sidebar-link *,
+body .standard-sidebar-item.selected > span svg,
+body .standard-sidebar-item.selected > span i {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+    font-weight: 500 !important;
+}

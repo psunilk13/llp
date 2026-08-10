@@ -1,0 +1,1487 @@
+/* ==========================================================================
+   LLP - BRICKMAN Complete Frappe Desk Theme
+   Moves Frappe's native .sidebar-toggle-btn directly into Top Navbar
+   ========================================================================== */
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+/* Root Theme Palette */
+:root {
+	--llp-desk-bg: #003B73;
+	--llp-desk-bg-dark: #00264D;
+	--llp-desk-active: #0072CE;
+	--llp-desk-hover: rgba(255, 255, 255, 0.18);
+}
+
+/* Base Body Frame Background */
+body[data-route],
+body.frappe-ui {
+	background-color: var(--llp-desk-bg) !important;
+}
+
+/* ==========================================================================
+   1. TOP NAVBAR CUSTOMIZATION (.navbar)
+   ========================================================================== */
+body .navbar.navbar-expand,
+body header.navbar {
+	background-color: var(--llp-desk-bg) !important;
+	border-bottom: 2px solid var(--llp-desk-bg-dark) !important;
+	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18) !important;
+	height: 56px !important;
+}
+
+body .navbar .container {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-start !important;
+}
+
+/* Native Frappe Sidebar Toggle Button inside Navbar (order: 1) - Fixed 36px x 36px Box matching logo height */
+body .navbar .sidebar-toggle-btn,
+body .navbar .llp-moved-toggle,
+#llp-top-hamburger {
+	background: #FFFFFF !important;
+	border: none !important;
+	color: #000000 !important;
+	cursor: pointer !important;
+	width: 36px !important;
+	/* FIXED 36PX WIDTH */
+	height: 36px !important;
+	/* FIXED 36PX HEIGHT MATCHING LOGO */
+	padding: 0 !important;
+	border-radius: 8px !important;
+	margin-right: 12px !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	order: 1 !important;
+	/* ABSOLUTE FIRST IN FLEX CONTAINER */
+	flex-shrink: 0 !important;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+	transition: background-color 0.2s ease !important;
+}
+
+body .navbar .sidebar-toggle-btn:hover,
+body .navbar .llp-moved-toggle:hover,
+#llp-top-hamburger:hover {
+	width: 36px !important;
+	/* PRESERVE FIXED WIDTH ON HOVER */
+	height: 36px !important;
+	/* PRESERVE FIXED HEIGHT ON HOVER */
+	padding: 0 !important;
+	transform: none !important;
+	/* NO SCALE EXPANSION ON HOVER */
+	background-color: #F1F5F9 !important;
+}
+
+#llp-top-hamburger i,
+.llp-desk-hamburger-btn i,
+.icon-hamburger i,
+.icon-toggler i {
+	font-size: 1.1rem !important;
+	color: #000000 !important;
+}
+
+#llp-top-hamburger .icon-hamburger {
+	display: inline-flex !important;
+}
+
+#llp-top-hamburger .icon-toggler {
+	display: none !important;
+}
+
+#llp-top-hamburger:hover .icon-hamburger {
+	display: none !important;
+}
+
+#llp-top-hamburger:hover .icon-toggler {
+	display: inline-flex !important;
+}
+
+body .navbar .sidebar-toggle-btn svg,
+body .navbar .sidebar-toggle-btn svg use,
+body .navbar .llp-moved-toggle svg,
+body .navbar .llp-moved-toggle svg use {
+	stroke: #000000 !important;
+	fill: #000000 !important;
+	color: #000000 !important;
+	transition: all 0.2s ease !important;
+}
+
+/* Logo Badge Box (order: 2) - White Badge for Logo Image, Pure White Text OUTSIDE badge */
+body .navbar-brand,
+body .navbar-home {
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+	height: auto !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 10px !important;
+	text-decoration: none !important;
+	margin-right: 16px !important;
+	order: 2 !important;
+	/* ABSOLUTE SECOND IN FLEX CONTAINER */
+}
+
+.llp-desk-logo-badge {
+	background: #FFFFFF !important;
+	padding: 4px 8px !important;
+	border-radius: 8px !important;
+	height: 36px !important;
+	/* EXACT SAME 36PX HEIGHT AS HAMBURGER BUTTON */
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+}
+
+.llp-desk-logo-img {
+	max-height: 24px !important;
+	width: auto !important;
+	display: block !important;
+}
+
+.llp-desk-brand-text {
+	font-family: 'Outfit', sans-serif !important;
+	font-size: 1rem !important;
+	font-weight: 800 !important;
+	color: #FFFFFF !important;
+	letter-spacing: 0.4px !important;
+	text-transform: uppercase !important;
+	display: inline-block !important;
+}
+
+.llp-desk-brand-text span {
+	color: #FFFFFF !important;
+}
+
+/* Hide stray breadcrumbs when inside the navbar */
+body .navbar>#navbar-breadcrumbs,
+body .navbar>.navbar-breadcrumbs {
+	display: none !important;
+}
+
+/* Search Bar & Awesomplete in Navbar (order: 3) - Flex-start magnifying icon slightly right */
+body .navbar .search-bar,
+body .navbar .awesomplete {
+	order: 3 !important;
+	position: relative !important;
+	margin-left: 4px !important;
+	margin-right: 12px !important;
+	display: flex !important;
+	align-items: center !important;
+}
+
+body .navbar .search-bar .search-icon,
+.llp-fa-search-icon {
+	position: absolute !important;
+	left: 14px !important;
+	/* Flex-start slightly right */
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	color: #FFFFFF !important;
+	font-size: 0.95rem !important;
+	pointer-events: none !important;
+	z-index: 10 !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+body .navbar .search-bar input,
+body .navbar .awesomplete input {
+	background: rgba(255, 255, 255, 0.15) !important;
+	border: 1px solid rgba(255, 255, 255, 0.25) !important;
+	color: #FFFFFF !important;
+	border-radius: 8px !important;
+	font-size: 0.88rem !important;
+	padding-left: 40px !important;
+}
+
+body .navbar .search-bar input::placeholder,
+body .navbar .awesomplete input::placeholder {
+	color: #B0C4DE !important;
+}
+
+/* Navbar Right Control Items (order: 4) */
+body .navbar .collapse,
+body .navbar .navbar-collapse {
+	order: 4 !important;
+}
+
+body .navbar .notifications-icon,
+body .navbar .btn-reset,
+body .navbar .nav-link,
+body .navbar .dropdown-toggle {
+	color: #FFFFFF !important;
+}
+
+body .navbar svg,
+body .navbar svg use,
+body .navbar .icon,
+body .navbar .es-icon {
+	fill: #FFFFFF !important;
+	stroke: #FFFFFF !important;
+	color: #FFFFFF !important;
+}
+
+/* Pure White Background & No Border for Avatar */
+body .navbar .user-avatar,
+body .navbar .avatar,
+body .navbar .avatar-frame,
+.llp-nav-avatar-box {
+	background-color: #FFFFFF !important;
+	border: none !important;
+	outline: none !important;
+	border-radius: 50% !important;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+	color: #0F172A !important;
+}
+
+body .navbar .avatar .avatar-frame {
+	border: none !important;
+}
+
+body .navbar .avatar-text,
+body .navbar .user-avatar span {
+	color: #0F172A !important;
+	font-weight: 700 !important;
+}
+
+.llp-desk-logout-btn {
+	width: 34px !important;
+	height: 34px !important;
+	background: #FFFFFF !important;
+	border-radius: 6px !important;
+	color: #EF4444 !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	margin-left: 10px !important;
+	order: 99 !important;
+	/* ALWAYS PLACED AT FAR RIGHT OF FLEX CONTAINER */
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+	text-decoration: none !important;
+	flex-shrink: 0 !important;
+}
+
+/* Bootstrap Top Navbar Dropdown Menus */
+body .navbar .dropdown-menu,
+body .llp-top-navbar .dropdown-menu {
+	background-color: #FFFFFF !important;
+	border: 1px solid rgba(0, 0, 0, 0.08) !important;
+	border-radius: 10px !important;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+	padding: 6px !important;
+	overflow: hidden !important;
+	margin-top: 6px !important;
+}
+
+body .navbar .dropdown-menu .dropdown-item,
+body .llp-top-navbar .dropdown-menu .dropdown-item,
+body .navbar .dropdown-menu a {
+	color: #000000 !important;
+	font-weight: 400 !important;
+	font-size: 0.88rem !important;
+	position: relative !important;
+	z-index: 1 !important;
+	background: transparent !important;
+	border-radius: 6px !important;
+	padding: 8px 14px !important;
+	cursor: pointer !important;
+	transition: none !important;
+}
+
+body .navbar .dropdown-menu .dropdown-item:hover,
+body .navbar .dropdown-menu .dropdown-item.active,
+body .llp-top-navbar .dropdown-menu .dropdown-item:hover,
+body .llp-top-navbar .dropdown-menu .dropdown-item.active,
+body .navbar .dropdown-menu a:hover {
+	color: #FFFFFF !important;
+	background-color: #003B73 !important;
+}
+
+/* Awesomplete Floating Search Suggestions Listbox Restoration */
+.awesomplete>ul,
+ul[id^="awesomplete-list"],
+.awesomplete [role="listbox"] {
+	position: absolute !important;
+	top: 100% !important;
+	left: 0 !important;
+	width: 100% !important;
+	min-width: 280px !important;
+	background-color: #FFFFFF !important;
+	border: 1px solid rgba(0, 0, 0, 0.12) !important;
+	border-radius: 8px !important;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+	padding: 6px !important;
+	margin-top: 4px !important;
+	z-index: 99999 !important;
+	list-style: none !important;
+	max-height: 320px !important;
+	overflow-y: auto !important;
+}
+
+/* Default Non-Hovered Items: Pure White Background, Solid Black Text for ALL Inner Tags */
+.awesomplete>ul>li,
+ul[id^="awesomplete-list"]>li,
+.awesomplete [role="option"] {
+	color: #000000 !important;
+	background-color: #FFFFFF !important;
+	font-weight: 500 !important;
+	font-size: 0.88rem !important;
+	padding: 8px 14px !important;
+	border-radius: 6px !important;
+	cursor: pointer !important;
+	margin-bottom: 2px !important;
+	white-space: normal !important;
+	transition: none !important;
+}
+
+.awesomplete>ul>li *,
+ul[id^="awesomplete-list"]>li *,
+.awesomplete [role="option"] * {
+	color: #000000 !important;
+	background: transparent !important;
+}
+
+/* Hovered & Selected Items: Solid Brand Blue Background, Crisp Pure White Text for ALL Inner Tags (a, span, p, mark, .link-option) */
+.awesomplete>ul>li:hover,
+.awesomplete>ul>li[aria-selected="true"],
+ul[id^="awesomplete-list"]>li:hover,
+ul[id^="awesomplete-list"]>li[aria-selected="true"],
+.awesomplete [role="option"]:hover,
+.awesomplete [role="option"][aria-selected="true"] {
+	color: #FFFFFF !important;
+	background-color: #003B73 !important;
+}
+
+.awesomplete>ul>li:hover *,
+.awesomplete>ul>li[aria-selected="true"] *,
+ul[id^="awesomplete-list"]>li:hover *,
+ul[id^="awesomplete-list"]>li[aria-selected="true"] *,
+.awesomplete [role="option"]:hover *,
+.awesomplete [role="option"][aria-selected="true"] * {
+	color: #FFFFFF !important;
+	fill: #FFFFFF !important;
+	stroke: #FFFFFF !important;
+	background: transparent !important;
+}
+
+.awesomplete mark,
+ul[id^="awesomplete-list"] mark {
+	background: transparent !important;
+	color: inherit !important;
+	font-weight: 700 !important;
+}
+
+/* Logout Confirmation Modal Overlay & Card Styling */
+.llp-modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(15, 23, 42, 0.6);
+	backdrop-filter: blur(4px);
+	z-index: 99999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.25s ease;
+}
+
+.llp-modal-overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.llp-modal-card {
+	background: #FFFFFF;
+	width: 90%;
+	max-width: 400px;
+	border-radius: 16px;
+	padding: 24px;
+	text-align: center;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+	transform: scale(0.9);
+	transition: transform 0.25s ease;
+}
+
+.llp-modal-overlay.active .llp-modal-card {
+	transform: scale(1);
+}
+
+.llp-modal-icon {
+	width: 56px;
+	height: 56px;
+	background: #FEE2E2;
+	color: #EF4444;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.5rem;
+	margin-bottom: 16px;
+}
+
+.llp-modal-title {
+	font-family: 'Outfit', sans-serif;
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: #0F172A;
+	margin-bottom: 8px;
+}
+
+.llp-modal-text {
+	font-size: 0.92rem;
+	color: #64748B;
+	margin-bottom: 24px;
+}
+
+.llp-modal-actions {
+	display: flex;
+	gap: 12px;
+}
+
+.llp-btn-modal-cancel {
+	flex: 1;
+	background: #F1F5F9;
+	color: #475569;
+	border: none;
+	padding: 10px;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+
+.llp-btn-modal-cancel:hover {
+	background: #E2E8F0;
+}
+
+.llp-btn-modal-confirm {
+	flex: 1;
+	background: #EF4444;
+	color: #FFFFFF;
+	border: none;
+	padding: 10px;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+	transition: background 0.2s ease;
+}
+
+.llp-btn-modal-confirm:hover {
+	background: #DC2626;
+}
+
+/* Container Page-Body & Base Frame Background */
+body[data-route],
+body.frappe-ui,
+body .container.page-body,
+body .page-body {
+	background-color: #FFFFFF !important;
+}
+
+/* Sidebar Containers get the blue background */
+body .body-sidebar-container,
+body .layout-side-section,
+body .desk-sidebar,
+body .body-sidebar,
+body .overlay-sidebar,
+body .standard-sidebar-section {
+	background-color: var(--llp-desk-bg) !important;
+}
+
+/* ==========================================================================
+   2. DESK LEFT SIDEBAR - PURE BLUE BG, FA ICONS, HIDDEN SCROLLBAR THUMB & NO LEFT BORDERS
+   ========================================================================== */
+/* FontAwesome Solid Icon Font Protection (Weight 900 for FA-Solid Glyphs) */
+body .desk-sidebar i.fa-solid,
+body .desk-sidebar i.fas,
+i.fa-solid,
+i.fas {
+	font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
+	font-weight: 900 !important;
+	/* CRITICAL REQUIRED FOR FA-SOLID TO DISPLAY GLYPHS */
+}
+
+body .desk-sidebar i.fa-regular,
+body .desk-sidebar i.far,
+i.fa-regular,
+i.far {
+	font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
+	font-weight: 400 !important;
+}
+
+/* Sidebar containers & surrounding gutters - Pure Blue Background & No Left Borders */
+body .body-sidebar-container,
+body .layout-side-section,
+body .desk-sidebar,
+body .body-sidebar,
+body .overlay-sidebar,
+body .standard-sidebar-section {
+	background-color: var(--llp-desk-bg) !important;
+	border: none !important;
+	border-left: none !important;
+	box-shadow: none !important;
+}
+
+body .layout-side-section {
+	background-color: var(--llp-desk-bg) !important;
+	border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+	margin-right: 0 !important;
+}
+
+body .desk-sidebar,
+body .body-sidebar,
+body .layout-side-section {
+	padding-top: 12px !important;
+	padding-left: 16px !important;
+	padding-right: 16px !important;
+	padding-bottom: 20px !important;
+	/* Smooth transition for sidebar width & margins */
+	transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		margin 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		opacity 0.25s ease !important;
+}
+
+/* Hide Sidebar Scrollbar Thumb Completely */
+body .desk-sidebar::-webkit-scrollbar,
+body .body-sidebar::-webkit-scrollbar,
+body .layout-side-section::-webkit-scrollbar,
+body .overlay-sidebar::-webkit-scrollbar,
+.desk-sidebar::-webkit-scrollbar,
+.body-sidebar::-webkit-scrollbar,
+.layout-side-section::-webkit-scrollbar {
+	width: 0 !important;
+	height: 0 !important;
+	display: none !important;
+	background: transparent !important;
+}
+
+body .desk-sidebar,
+body .body-sidebar,
+body .layout-side-section,
+body .overlay-sidebar,
+.desk-sidebar,
+.body-sidebar,
+.layout-side-section {
+	scrollbar-width: none !important;
+	-ms-overflow-style: none !important;
+}
+
+/* Remove Left Borders on All Inner Sidebar Elements */
+body .desk-sidebar .sidebar-item-container,
+body .desk-sidebar .desk-sidebar-item,
+body .desk-sidebar .standard-sidebar-item,
+body .desk-sidebar .sidebar-child-item,
+body .desk-sidebar .nested-container,
+body .desk-sidebar .sidebar-section-title {
+	border: none !important;
+	border-left: none !important;
+	box-shadow: none !important;
+}
+
+/* Sidebar Input Fields, Labels and List Sidebar Buttons (e.g. List View Filters) */
+body .layout-side-section input,
+body .layout-side-section select,
+body .layout-side-section textarea,
+body .layout-side-section .form-control,
+body .layout-side-section .list-sidebar-button,
+body .layout-side-section .list-group-by-fields .list-sidebar-button {
+	background-color: rgba(255, 255, 255, 0.1) !important;
+	border: 1px solid rgba(255, 255, 255, 0.2) !important;
+	color: #FFFFFF !important;
+	border-radius: 4px !important;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+body .layout-side-section input:focus,
+body .layout-side-section select:focus,
+body .layout-side-section textarea:focus,
+body .layout-side-section .form-control:focus,
+body .layout-side-section .list-sidebar-button:focus,
+body .layout-side-section .list-group-by-fields .list-sidebar-button:focus {
+	border-color: rgba(255, 255, 255, 0.6) !important;
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1) !important;
+	outline: none !important;
+}
+
+/* Ensure SVG icons and text inside the list-sidebar-button look like placeholders (grey) */
+body .layout-side-section .list-sidebar-button *,
+body .layout-side-section .list-sidebar-button svg,
+body .layout-side-section .list-group-by-fields .list-sidebar-button *,
+body .layout-side-section .list-group-by-fields .list-sidebar-button svg {
+	color: rgba(255, 255, 255, 0.6) !important;
+	fill: rgba(255, 255, 255, 0.6) !important;
+	stroke: rgba(255, 255, 255, 0.6) !important;
+	transition: color 0.2s ease, fill 0.2s ease, stroke 0.2s ease !important;
+}
+
+/* Hover state for list-sidebar-button */
+body .layout-side-section .list-sidebar-button:hover,
+body .layout-side-section .list-group-by-fields .list-sidebar-button:hover {
+	background-color: rgba(255, 255, 255, 0.15) !important;
+	border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Sidebar Dropdown Menus (Filter By, Assigned To, Tags) */
+body .layout-side-section .dropdown-menu,
+body > .dropdown-menu.list-stats-dropdown,
+body > .dropdown-menu.group-by-dropdown {
+	background-color: #FFFFFF !important;
+	border: 1px solid #E2E8F0 !important;
+	border-radius: 8px !important;
+	box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+}
+
+/* All text inside the dropdown should be dark */
+body .layout-side-section .dropdown-menu,
+body .layout-side-section .dropdown-menu *,
+body > .dropdown-menu.list-stats-dropdown,
+body > .dropdown-menu.list-stats-dropdown *,
+body > .dropdown-menu.group-by-dropdown,
+body > .dropdown-menu.group-by-dropdown * {
+	color: #1A202C !important;
+}
+
+/* Fix the search input inside the sidebar dropdowns */
+body .layout-side-section .dropdown-menu .dropdown-search .form-control,
+body .layout-side-section .dropdown-menu input,
+body > .dropdown-menu.list-stats-dropdown .dropdown-search .form-control,
+body > .dropdown-menu.list-stats-dropdown input,
+body > .dropdown-menu.group-by-dropdown .dropdown-search .form-control,
+body > .dropdown-menu.group-by-dropdown input {
+	background-color: #F8FAFC !important;
+	border: 1px solid #CBD5E1 !important;
+	color: #1A202C !important;
+	border-radius: 4px !important;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+body .layout-side-section .dropdown-menu .dropdown-search .form-control:focus,
+body .layout-side-section .dropdown-menu input:focus,
+body > .dropdown-menu.list-stats-dropdown .dropdown-search .form-control:focus,
+body > .dropdown-menu.list-stats-dropdown input:focus,
+body > .dropdown-menu.group-by-dropdown .dropdown-search .form-control:focus,
+body > .dropdown-menu.group-by-dropdown input:focus {
+	border-color: #0072CE !important;
+	box-shadow: 0 0 0 3px rgba(0, 114, 206, 0.15) !important;
+	outline: none !important;
+}
+
+body .layout-side-section .dropdown-menu input::placeholder,
+body > .dropdown-menu.list-stats-dropdown input::placeholder,
+body > .dropdown-menu.group-by-dropdown input::placeholder {
+	color: #94A3B8 !important;
+}
+
+/* Dropdown item hover states */
+body .layout-side-section .dropdown-menu .dropdown-item:hover,
+body .layout-side-section .dropdown-menu a:hover,
+body .layout-side-section .dropdown-menu .stat-link:hover,
+body > .dropdown-menu.list-stats-dropdown .dropdown-item:hover,
+body > .dropdown-menu.list-stats-dropdown a:hover,
+body > .dropdown-menu.list-stats-dropdown .stat-link:hover,
+body > .dropdown-menu.group-by-dropdown .dropdown-item:hover,
+body > .dropdown-menu.group-by-dropdown a:hover,
+body > .dropdown-menu.group-by-dropdown .stat-link:hover {
+	background-color: #F1F5F9 !important;
+	color: #0072CE !important;
+}
+
+body .layout-side-section .dropdown-menu .dropdown-item:hover *,
+body .layout-side-section .dropdown-menu a:hover *,
+body .layout-side-section .dropdown-menu .stat-link:hover *,
+body > .dropdown-menu.list-stats-dropdown .dropdown-item:hover *,
+body > .dropdown-menu.list-stats-dropdown a:hover *,
+body > .dropdown-menu.list-stats-dropdown .stat-link:hover *,
+body > .dropdown-menu.group-by-dropdown .dropdown-item:hover *,
+body > .dropdown-menu.group-by-dropdown a:hover *,
+body > .dropdown-menu.group-by-dropdown .stat-link:hover * {
+	color: #0072CE !important;
+}
+
+body .layout-side-section input::placeholder,
+body .layout-side-section textarea::placeholder {
+	color: rgba(255, 255, 255, 0.6) !important;
+}
+
+body .layout-side-section label,
+body .layout-side-section .control-label,
+body .layout-side-section .sidebar-label,
+body .layout-side-section .sidebar-section-title {
+	color: #FFFFFF !important;
+}
+
+/* Smooth Desktop Sidebar Collapse Transition */
+@media (min-width: 769px) {
+
+	body.desk-sidebar-collapsed .desk-sidebar,
+	body.desk-sidebar-collapsed .body-sidebar,
+	body.desk-sidebar-collapsed .layout-side-section,
+	body.sidebar-collapsed .desk-sidebar,
+	body.sidebar-collapsed .body-sidebar,
+	body.sidebar-collapsed .layout-side-section {
+		width: 0 !important;
+		min-width: 0 !important;
+		max-width: 0 !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		margin-left: -12px !important;
+		opacity: 0 !important;
+		overflow: hidden !important;
+		border-right: none !important;
+		display: block !important;
+		/* Preserve block element for smooth transition */
+	}
+
+	body .layout-main-section-wrapper {
+		transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+	}
+}
+
+/* Hide title elements inside page-head (title text, title-area, sidebar toggle, page icon) */
+body .page-head .title-text,
+body .page-head .title-area,
+body .page-head .sidebar-toggle-btn,
+body .page-head .page-icon {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+/* Collapse the .page-title column to 0 so page-actions shift left */
+body .page-head .page-title {
+	width: 0 !important;
+	min-width: 0 !important;
+	max-width: 0 !important;
+	flex: 0 0 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	overflow: hidden !important;
+}
+
+/* Let page-actions fill the full width */
+body .page-head .page-actions {
+	flex: 1 1 100% !important;
+	max-width: 100% !important;
+	justify-content: flex-end !important;
+	align-items: center !important;
+	flex-wrap: nowrap !important;
+}
+
+/* Breadcrumbs in a single row on the left */
+body .page-head .page-actions .navbar-breadcrumbs,
+body .page-head .page-actions #navbar-breadcrumbs {
+	display: inline-flex !important;
+	visibility: visible !important;
+	margin-right: auto !important;
+	/* Pushes buttons to the right */
+	align-items: center !important;
+	padding: 0 !important;
+	flex-wrap: nowrap !important;
+	flex-direction: row !important;
+	list-style: none !important;
+}
+
+body .page-head .page-actions .navbar-breadcrumbs li {
+	display: inline-flex !important;
+	align-items: center !important;
+	white-space: nowrap !important;
+}
+
+body .page-head .page-actions .navbar-breadcrumbs *,
+body .page-head .page-actions #navbar-breadcrumbs *,
+body .page-head .page-actions .navbar-breadcrumbs a,
+body .page-head .page-actions #navbar-breadcrumbs a,
+body .page-head .page-actions .navbar-breadcrumbs span,
+body .page-head .page-actions #navbar-breadcrumbs span {
+	color: #0072CE !important;
+	/* Bold, vibrant blue */
+	font-weight: 600 !important;
+	font-size: 0.95rem !important;
+	text-decoration: none !important;
+}
+
+/* Shrink page-head-content height when title is hidden */
+body .page-head .page-head-content {
+	height: auto !important;
+	min-height: 36px !important;
+	padding: 4px 0 !important;
+}
+
+/* Workspace/Desk home pages: collapse page-head completely (no action buttons visible) */
+body.llp-pagehead-empty .page-head {
+	height: 0 !important;
+	min-height: 0 !important;
+	padding: 0 !important;
+	margin-bottom: 0 !important;
+	border: none !important;
+	overflow: hidden !important;
+}
+
+/* Section Header Titles in Side Desk - Gray (Non-Bold) Font Weight */
+body .desk-sidebar .sidebar-section-title,
+body .desk-sidebar .standard-sidebar-label,
+body .body-sidebar .sidebar-section-title,
+body .desk-sidebar .section-title {
+	color: #94A3B8 !important;
+	/* CLEAN SLATE GRAY */
+	font-size: 0.74rem !important;
+	font-weight: 500 !important;
+	letter-spacing: 0.6px !important;
+	text-transform: uppercase !important;
+	margin-bottom: 10px !important;
+	padding-left: 10px !important;
+	border: none !important;
+}
+
+/* Menu Item Links & Padding - Clean Gray Font Color */
+body .desk-sidebar a,
+body .desk-sidebar span,
+body .desk-sidebar p,
+body .layout-side-section a,
+body .layout-side-section span,
+body .layout-side-section .sidebar-item {
+	color: #CBD5E1 !important;
+	/* CLEAN SLATE GRAY TEXT */
+	text-decoration: none !important;
+	font-weight: 400 !important;
+	letter-spacing: 0.4px !important;
+	font-size: 0.88rem !important;
+	transition: background-color 0.2s ease, color 0.2s ease !important;
+	transform: none !important;
+	/* NO SCALE UP TRANSITION */
+}
+
+/* Generous Padding for Menu Items */
+body .desk-sidebar .sidebar-item,
+body .desk-sidebar .desk-sidebar-item,
+body .desk-sidebar .standard-sidebar-item,
+body .desk-sidebar a.item-anchor,
+body .body-sidebar .sidebar-item {
+	padding: 2px 3px !important;
+	/* GENEROUS MENU ITEM PADDING */
+	margin-bottom: 4px !important;
+	display: flex !important;
+	align-items: center !important;
+	border-radius: 8px !important;
+}
+
+/* Hover & Active / Selected State for Sidebar Items - Translucent Glass White */
+body .desk-sidebar .standard-sidebar-item:hover,
+body .layout-side-section .sidebar-item:hover,
+body .desk-sidebar .sidebar-item.selected,
+body .desk-sidebar .sidebar-item.active,
+body .desk-sidebar .standard-sidebar-item.selected,
+body .desk-sidebar .standard-sidebar-item.active,
+body .desk-sidebar .desk-sidebar-item.selected,
+body .desk-sidebar .desk-sidebar-item.active,
+body .body-sidebar .sidebar-item.selected,
+body .layout-side-section .sidebar-item.selected,
+body .layout-side-section .sidebar-item.active {
+	align-items: center;
+	border: 1px solid rgba(255, 255, 255, 0.22) !important;
+	border-radius: 8px !important;
+	font-weight: 500 !important;
+	transform: none !important;
+	background-color: rgba(255, 255, 255, 0.15) !important;
+	box-shadow: none !important;
+	transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+body .desk-sidebar .sidebar-item:hover *,
+body .desk-sidebar .item-anchor:hover *,
+body .body-sidebar .sidebar-item:hover *,
+body .layout-side-section .sidebar-item:hover *,
+body .desk-sidebar .sidebar-item.selected *,
+body .desk-sidebar .sidebar-item.active *,
+body .desk-sidebar .standard-sidebar-item.selected *,
+body .desk-sidebar .standard-sidebar-item.active *,
+body .desk-sidebar .desk-sidebar-item.selected *,
+body .desk-sidebar .desk-sidebar-item.active *,
+body .body-sidebar .sidebar-item.selected *,
+body .layout-side-section .sidebar-item.selected *,
+body .layout-side-section .sidebar-item.active * {
+	color: #FFFFFF !important;
+	font-weight: 500 !important;
+	transform: none !important;
+}
+
+/* Clean Gray SVGs & FontAwesome Icons in Sidebar */
+body .desk-sidebar svg,
+body .desk-sidebar svg use,
+body .desk-sidebar svg path,
+body .desk-sidebar .icon,
+body .desk-sidebar .es-icon,
+body .desk-sidebar i,
+body .body-sidebar svg,
+body .body-sidebar svg use,
+body .body-sidebar svg path,
+body .body-sidebar .icon,
+body .body-sidebar .es-icon,
+body .body-sidebar i,
+body .layout-side-section svg,
+body .layout-side-section svg use,
+body .layout-side-section svg path,
+body .layout-side-section .icon,
+body .layout-side-section .es-icon {
+	fill: #CBD5E1 !important;
+	/* CLEAN GRAY ICON COLOR */
+	stroke: #CBD5E1 !important;
+	color: #CBD5E1 !important;
+	/* CLEAN GRAY ICON COLOR */
+	opacity: 1 !important;
+	font-size: 1rem !important;
+	font-weight: 400 !important;
+	margin-right: 10px !important;
+	transform: none !important;
+	/* NO SCALE UP */
+}
+
+/* Ensure FontAwesome Icons Render Cleanly with Gray Color */
+body .desk-sidebar .sidebar-item-icon i.fa-solid,
+body .desk-sidebar .sidebar-item-icon i.fa-regular,
+body .desk-sidebar .sidebar-item-icon i.fas,
+body .desk-sidebar .sidebar-item-icon i.far {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 20px !important;
+	height: 20px !important;
+	color: #CBD5E1 !important;
+	/* CLEAN GRAY ICON COLOR */
+	font-weight: 400 !important;
+	transform: none !important;
+}
+
+body .desk-sidebar .sidebar-item:hover .sidebar-item-icon i,
+body .desk-sidebar .sidebar-item.selected .sidebar-item-icon i {
+	color: #FFFFFF !important;
+}
+
+
+/* Breadcrumb SVGs and pseudo-elements */
+body .page-head .page-actions .navbar-breadcrumbs svg,
+body .page-head .page-actions #navbar-breadcrumbs svg,
+body .page-head .page-actions .navbar-breadcrumbs *::before,
+body .page-head .page-actions #navbar-breadcrumbs *::before,
+body .page-head .page-actions .navbar-breadcrumbs *::after,
+body .page-head .page-actions #navbar-breadcrumbs *::after {
+	fill: #0072CE !important;
+	stroke: #0072CE !important;
+	color: #0072CE !important;
+}
+
+/* ==========================================================================
+   3. PAGE HEAD & MAIN CONTENT AREA
+   ========================================================================== */
+body .page-head {
+	background-color: transparent !important;
+	border-bottom: none !important;
+	border-radius: 0 !important;
+	padding: 4px 22px !important;
+	margin-bottom: 0 !important;
+}
+
+/* Action buttons inside page-head */
+body .page-head .btn {
+	background-color: var(--llp-desk-bg) !important;
+	border-color: rgba(255, 255, 255, 0.1) !important;
+	color: #FFFFFF !important;
+	border-radius: 4px !important;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Primary buttons (Add/Save) */
+body .page-head .btn-primary {
+	background-color: #2e7d32 !important;
+	border-color: #1b5e20 !important;
+}
+
+body .page-head .btn-primary:hover {
+	background-color: #1b5e20 !important;
+}
+
+/* Enforce hidden states inside page-head */
+body .page-head .hide,
+body .page-head .hidden,
+body .page-head .d-none {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+/* Base button styles */
+body .page-head .btn:hover {
+	background-color: #061f42 !important;
+	transform: translateY(-2px) scale(1.03) !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+	color: #FFFFFF !important;
+}
+
+/* Ensure any remaining SVGs have a clean stroke width */
+body .page-head svg {
+	stroke-width: 1.5px !important;
+	transition: all 0.2s ease !important;
+}
+
+/* Dropdown styling */
+body .page-head .dropdown-menu {
+	background-color: var(--llp-desk-bg) !important;
+	border: 1px solid rgba(255, 255, 255, 0.1) !important;
+	border-radius: 8px !important;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+	padding: 8px 4px !important;
+	margin-top: 12px !important;
+	animation: slideDownFade 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+@keyframes slideDownFade {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+body .page-head .dropdown-menu a,
+body .page-head .dropdown-menu .dropdown-item {
+	color: #FFFFFF !important;
+	border-radius: 6px !important;
+	padding: 8px 12px !important;
+	transition: all 0.2s ease !important;
+	display: flex !important;
+	align-items: center !important;
+}
+
+body .page-head .dropdown-menu a:hover,
+body .page-head .dropdown-menu .dropdown-item:hover {
+	background-color: rgba(255, 255, 255, 0.1) !important;
+	transform: translateX(4px) !important;
+}
+
+body .page-head .dropdown-menu a svg,
+body .page-head .dropdown-menu .dropdown-item svg,
+body .page-head .dropdown-menu a i,
+body .page-head .dropdown-menu .dropdown-item i {
+	margin-right: 8px !important;
+	stroke-width: 1.5px !important;
+	transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+body .page-head .dropdown-menu a:hover svg,
+body .page-head .dropdown-menu .dropdown-item:hover svg,
+body .page-head .dropdown-menu a:hover i,
+body .page-head .dropdown-menu .dropdown-item:hover i {
+	transform: scale(1.2) !important;
+}
+
+body .page-head .title-text {
+	font-family: 'Outfit', sans-serif !important;
+	font-size: 1.6rem !important;
+	font-weight: 800 !important;
+	color: #0F172A !important;
+}
+
+body .layout-main-section-wrapper {
+	background-color: #FFFFFF !important;
+	border-radius: 12px !important;
+	padding: 24px !important;
+}
+
+body .layout-main-section {
+	background-color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   4. WORKSPACE & DASHBOARD WIDGETS (Cards)
+   ========================================================================== */
+
+/* Workspace Header Text Color */
+body .desk-page .ce-header,
+body .workspace-page .ce-header,
+body .ce-header,
+body .desk-page .widget:not(.shortcut-widget-box) .widget-title,
+body .workspace-page .widget:not(.shortcut-widget-box) .widget-title,
+body .desk-page .widget:not(.shortcut-widget-box) .widget-title *,
+body .workspace-page .widget:not(.shortcut-widget-box) .widget-title *,
+body .ce-header * {
+	color: #0072CE !important;
+	/* Navbar deep blue */
+}
+
+/* Apply styling specifically to Shortcut Cards and Individual Link Items */
+body .desk-page .shortcut-widget-box,
+body .workspace-page .shortcut-widget-box,
+body .desk-page .links-widget-box .link-item,
+body .workspace-page .links-widget-box .link-item {
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5) !important;
+	border-radius: 4px !important;
+	background-color: #FFFFFF !important;
+	/* border: 1px solid rgba(0, 114, 206, 0.05) !important; */
+	padding: 6px 10px !important;
+	/* Increased height via padding */
+	min-height: 30px !important;
+	transition: transform 700ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 1s cubic-bezier(0.4, 0, 0.2, 1), background-color 1s ease !important;
+	z-index: 1;
+}
+
+/* Ensure link items behave like blocks so padding works */
+body .desk-page .links-widget-box .link-item,
+body .workspace-page .links-widget-box .link-item {
+	display: flex !important;
+	align-items: center !important;
+	margin-bottom: 8px !important;
+}
+
+/* Base text and icon colors */
+body .desk-page .shortcut-widget-box *,
+body .workspace-page .shortcut-widget-box *,
+body .desk-page .links-widget-box .link-item *,
+body .workspace-page .links-widget-box .link-item * {
+	transition: color 1s cubic-bezier(0.4, 0, 0.2, 1), fill 0.2s ease-out, stroke 0.2s ease-out !important;
+}
+
+/* The sweeping highlight overlay */
+body .desk-page .shortcut-widget-box::before,
+body .workspace-page .shortcut-widget-box::before,
+body .desk-page .links-widget-box .link-item::before,
+body .workspace-page .links-widget-box .link-item::before {
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* Deep Navbar Blue Gradient */
+	background: linear-gradient(60deg, #031835, #0072CE, #031835);
+	transform: translateX(-100%);
+	transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+	z-index: -1;
+	pointer-events: none;
+}
+
+/* Hover effects */
+body .desk-page .shortcut-widget-box:hover,
+body .workspace-page .shortcut-widget-box:hover,
+body .desk-page .links-widget-box .link-item:hover,
+body .workspace-page .links-widget-box .link-item:hover {
+	box-shadow: 0px 8px 24px rgba(3, 24, 53, 0.25) !important;
+	transform: translateY(-3px) !important;
+}
+
+body .desk-page .shortcut-widget-box:hover::before,
+body .workspace-page .shortcut-widget-box:hover::before,
+body .desk-page .links-widget-box .link-item:hover::before,
+body .workspace-page .links-widget-box .link-item:hover::before {
+	transform: translateX(0);
+}
+
+/* Change text and SVGs to white on hover */
+body .desk-page .shortcut-widget-box:hover *,
+body .workspace-page .shortcut-widget-box:hover *,
+body .desk-page .links-widget-box .link-item:hover *,
+body .workspace-page .links-widget-box .link-item:hover * {
+	color: #FFFFFF !important;
+	fill: #FFFFFF !important;
+	stroke: #FFFFFF !important;
+}
+
+/* Invert chips/badges/indicators on hover */
+body .desk-page .shortcut-widget-box:hover .indicator,
+body .workspace-page .shortcut-widget-box:hover .indicator,
+body .desk-page .links-widget-box .link-item:hover .indicator,
+body .workspace-page .links-widget-box .link-item:hover .indicator,
+body .desk-page .shortcut-widget-box:hover .indicator-pill,
+body .workspace-page .shortcut-widget-box:hover .indicator-pill,
+body .desk-page .links-widget-box .link-item:hover .indicator-pill,
+body .workspace-page .links-widget-box .link-item:hover .indicator-pill,
+body .desk-page .shortcut-widget-box:hover .badge,
+body .workspace-page .shortcut-widget-box:hover .badge,
+body .desk-page .links-widget-box .link-item:hover .badge,
+body .workspace-page .links-widget-box .link-item:hover .badge {
+	background-color: #FFFFFF !important;
+	color: #031835 !important;
+	border-color: #FFFFFF !important;
+	transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1), border-color 1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ensure inner text of the chip also inherits the dark blue color */
+body .desk-page .shortcut-widget-box:hover .indicator *,
+body .workspace-page .shortcut-widget-box:hover .indicator *,
+body .desk-page .links-widget-box .link-item:hover .indicator *,
+body .workspace-page .links-widget-box .link-item:hover .indicator *,
+body .desk-page .shortcut-widget-box:hover .indicator-pill *,
+body .workspace-page .shortcut-widget-box:hover .indicator-pill *,
+body .desk-page .links-widget-box .link-item:hover .indicator-pill *,
+body .workspace-page .links-widget-box .link-item:hover .indicator-pill *,
+body .desk-page .shortcut-widget-box:hover .badge *,
+body .workspace-page .shortcut-widget-box:hover .badge *,
+body .desk-page .links-widget-box .link-item:hover .badge *,
+body .workspace-page .links-widget-box .link-item:hover .badge * {
+	color: #031835 !important;
+}
+
+/* Ensure the main links widget box itself doesn't have the old widget styling since we styled the links inside it */
+body .desk-page .ce-block__content .links-widget-box,
+body .workspace-page .ce-block__content .links-widget-box {
+	box-shadow: none !important;
+	background: transparent !important;
+	border: none !important;
+}
+
+body .desk-page .ce-block__content .links-widget-box::before,
+body .workspace-page .ce-block__content .links-widget-box::before {
+	display: none !important;
+}
+
+/* ==========================================================================
+   4. DESKTOP LAYOUT (MIN-WIDTH: 769PX)
+   ========================================================================== */
+@media (min-width: 769px) {
+
+	/* Fixed Sidebar */
+	body .layout-side-section {
+		position: fixed !important;
+		top: 56px !important;
+		left: 0 !important;
+		width: 240px !important;
+		height: calc(100vh - 56px) !important;
+		z-index: 100 !important;
+	}
+
+	/* Page Head and Main Content shifted right by Sidebar Width */
+	body .page-head,
+	body .layout-main-section-wrapper {
+		margin-left: 240px !important;
+		width: calc(100% - 240px) !important;
+		transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+	}
+
+	/* When Sidebar is hidden or toggled closed, expand main content to full width */
+	body.sidebar-collapsed .page-head,
+	body.desk-sidebar-collapsed .page-head,
+	body:has(.layout-side-section.hidden) .page-head,
+	body:has(.layout-side-section[style*="display: none"]) .page-head,
+	body:has(.layout-side-section.hide) .page-head,
+	body.sidebar-collapsed .layout-main-section-wrapper,
+	body.desk-sidebar-collapsed .layout-main-section-wrapper,
+	body:has(.layout-side-section.hidden) .layout-main-section-wrapper,
+	body:has(.layout-side-section[style*="display: none"]) .layout-main-section-wrapper,
+	body:has(.layout-side-section.hide) .layout-main-section-wrapper {
+		margin-left: 0 !important;
+		width: 100% !important;
+	}
+}
+
+/* ==========================================================================
+   5. MOBILE NAVBAR & RESPONSIVE DRAWER OVERLAY (MAX-WIDTH: 768PX)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+	/* Hide clutter in mobile top navbar & HIDE COMPANY NAME TEXT */
+	body .navbar .search-bar,
+	body .navbar .awesomplete,
+	body .navbar #navbar-breadcrumbs,
+	body .navbar .navbar-breadcrumbs,
+	body .navbar .dropdown-help,
+	body .navbar .dropdown-notifications,
+	body .navbar .dropdown-message,
+	body .navbar .vertical-bar,
+	.llp-desk-brand-text {
+		display: none !important;
+	}
+
+	/* Force Navbar Container Flex alignment for Mobile */
+	body .navbar .container,
+	body header.navbar .container {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+		width: 100% !important;
+		padding: 0 12px !important;
+	}
+
+	/* Show ONLY Hamburger, Logo Badge, User Profile Avatar, and Logout in Mobile Navbar */
+	#llp-top-hamburger {
+		order: 1 !important;
+		display: inline-flex !important;
+	}
+
+	body .navbar-brand,
+	body .navbar-home {
+		order: 2 !important;
+		display: inline-flex !important;
+		margin-right: auto !important;
+		margin-left: 8px !important;
+	}
+
+	/* User Profile Avatar in Mobile Top Navbar */
+	body .navbar .dropdown-navbar-user {
+		order: 3 !important;
+		display: inline-flex !important;
+		margin-right: 8px !important;
+	}
+
+	/* Logout Button in Mobile Top Navbar */
+	.llp-desk-logout-btn {
+		order: 4 !important;
+		display: inline-flex !important;
+		margin-left: 0 !important;
+	}
+
+	/* Mobile Sidebar Side Drawer Overlay Container */
+	body .layout-side-section,
+	body .body-sidebar,
+	#sidebar-offcanvas,
+	.offcanvas.offcanvas-start {
+		position: fixed !important;
+		top: 56px !important;
+		left: 0 !important;
+		width: 280px !important;
+		height: calc(100vh - 56px) !important;
+		z-index: 9999 !important;
+		background-color: var(--llp-desk-bg) !important;
+		padding: 12px !important;
+		margin: 0 !important;
+		transform: translateX(-100%) !important;
+		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease !important;
+		box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25) !important;
+		overflow-y: auto !important;
+		opacity: 0 !important;
+		display: block !important;
+	}
+
+	/* Inner desk-sidebar inside layout-side-section */
+	body .layout-side-section .desk-sidebar,
+	body .desk-sidebar,
+	body .layout-side-section .list-sidebar,
+	body .layout-side-section .overlay-sidebar,
+	body .layout-side-section .hidden-xs,
+	body .layout-side-section .hidden-sm {
+		position: relative !important;
+		top: 0 !important;
+		left: 0 !important;
+		width: 100% !important;
+		height: auto !important;
+		background-color: transparent !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		transform: none !important;
+		opacity: 1 !important;
+		display: block !important;
+		visibility: visible !important;
+		box-shadow: none !important;
+	}
+
+	/* Open Drawer State */
+	body.drawer-open .layout-side-section,
+	body.drawer-open .body-sidebar,
+	#sidebar-offcanvas.show,
+	.offcanvas.show {
+		transform: translateX(0) !important;
+		opacity: 1 !important;
+	}
+
+	/* Reset all nested inner offsets, shifts and negative margins */
+	body .layout-side-section *,
+	body .desk-sidebar * {
+		box-sizing: border-box !important;
+	}
+
+	body .layout-side-section .standard-sidebar-section,
+	body .layout-side-section .sidebar-item-container,
+	body .layout-side-section .desk-sidebar-item,
+	body .layout-side-section .standard-sidebar-item,
+	body .layout-side-section .sidebar-item,
+	body .layout-side-section .sidebar-child-item,
+	body .layout-side-section .nested-container,
+	body .body-sidebar .standard-sidebar-section,
+	body .body-sidebar .sidebar-item-container,
+	body .body-sidebar .desk-sidebar-item,
+	body .body-sidebar .standard-sidebar-item,
+	body .body-sidebar .sidebar-item,
+	body .body-sidebar .sidebar-child-item,
+	body .body-sidebar .nested-container {
+		position: static !important;
+		left: 0 !important;
+		right: auto !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		width: 100% !important;
+		transform: none !important;
+		float: none !important;
+		display: block !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+	}
+
+	/* Clean Mobile Drawer Item Link Alignment & Generous Padding */
+	body .layout-side-section a.item-anchor,
+	body .layout-side-section .sidebar-item,
+	body .layout-side-section .desk-sidebar-item,
+	body .body-sidebar a.item-anchor,
+	body .body-sidebar .sidebar-item,
+	body .body-sidebar .desk-sidebar-item {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: flex-start !important;
+		width: 100% !important;
+		padding: 10px 14px !important;
+		margin-bottom: 4px !important;
+		left: 0 !important;
+		margin-left: 0 !important;
+		text-align: left !important;
+	}
+
+	body .layout-side-section .sidebar-item-label {
+		display: inline-block !important;
+		margin-left: 0 !important;
+		text-align: left !important;
+		white-space: nowrap !important;
+	}
+
+	/* Mobile Backdrop Overlay */
+	body.drawer-open::after {
+		content: "" !important;
+		position: fixed !important;
+		top: 56px !important;
+		left: 0 !important;
+		width: 100vw !important;
+		height: calc(100vh - 56px) !important;
+		background: rgba(15, 23, 42, 0.5) !important;
+		backdrop-filter: blur(2px) !important;
+		z-index: 9998 !important;
+	}
+
+
+}
+
+@media (min-width: 1200px) {
+
+	.container-xl,
+	.container-lg,
+	.container-md,
+	.container-sm,
+	.container,
+	.page-wrapper,
+	.page-content {
+		max-width: 100% !important;
+	}
+}

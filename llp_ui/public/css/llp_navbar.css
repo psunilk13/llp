@@ -1,0 +1,229 @@
+/* ==========================================================================
+   LLP - BRICKMAN Logo Matched Corporate Top Navbar Design System
+   Safely Scoped to prevent affecting standard Frappe Desk production behavior
+   ========================================================================= */
+
+:root {
+	--llp-nav-bg: #1E40AF;
+	--llp-nav-bg-dark: #1E3A8A;
+	--llp-nav-gold: #F59E0B;
+	--llp-nav-gold-light: #FBBF24;
+	--llp-nav-text: #FFFFFF;
+	--llp-nav-text-muted: #E2E8F0;
+	--llp-nav-search-bg: rgba(255, 255, 255, 0.15);
+	--llp-nav-search-border: rgba(255, 255, 255, 0.25);
+}
+
+/* Custom LLP Navbar Only (.llp-top-navbar) - Prevents breaking standard Frappe Desk navbar */
+.llp-top-navbar {
+	background: linear-gradient(90deg, #1E3A8A 0%, #1E40AF 50%, #1D4ED8 100%) !important;
+	border-bottom: 3px solid var(--llp-nav-gold) !important;
+	box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15) !important;
+	min-height: 56px !important;
+	padding: 0 16px !important;
+	transition: all 0.25s ease !important;
+}
+
+/* Brand Logo Container in LLP Navbar */
+.llp-top-navbar .navbar-brand,
+.llp-top-navbar .navbar-home,
+.llp-top-navbar .llp-nav-brand {
+	display: flex !important;
+	align-items: center !important;
+	gap: 10px !important;
+	text-decoration: none !important;
+	padding: 4px 0 !important;
+}
+
+/* .llp-top-navbar .llp-desk-logo-badge,
+.llp-top-navbar .llp-nav-logo-badge {
+	background: #FFFFFF !important;
+	padding: 4px 8px !important;
+	border-radius: 8px !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+	border: 1px solid rgba(255, 255, 255, 0.8) !important; */
+/* } */
+
+.llp-top-navbar .llp-desk-logo-img,
+.llp-top-navbar .llp-nav-logo-img {
+	height: 44px !important;
+	/* Increased from 32px to make the logo much larger */
+	width: auto !important;
+	display: block !important;
+	max-height: none !important;
+}
+
+.llp-top-navbar .llp-nav-brand-title {
+	font-family: 'Outfit', sans-serif !important;
+	font-size: 1.15rem !important;
+	font-weight: 800 !important;
+	color: #FFFFFF !important;
+	letter-spacing: 0.5px !important;
+	text-transform: uppercase !important;
+}
+
+.llp-top-navbar .llp-nav-brand-title span {
+	color: var(--llp-nav-gold) !important;
+}
+
+/* Search Bar in LLP Navbar */
+.llp-top-navbar .search-bar,
+.llp-top-navbar .navbar-search,
+.llp-top-navbar .llp-nav-search {
+	max-width: 320px !important;
+	width: 100% !important;
+	margin: 0 16px !important;
+}
+
+.llp-top-navbar .search-bar input,
+.llp-top-navbar .navbar-search input,
+.llp-top-navbar .llp-nav-search-input {
+	background: var(--llp-nav-search-bg) !important;
+	border: 1px solid var(--llp-nav-search-border) !important;
+	color: #FFFFFF !important;
+	border-radius: 8px !important;
+	padding: 8px 14px 8px 36px !important;
+	font-size: 0.88rem !important;
+	transition: all 0.2s ease !important;
+}
+
+.llp-top-navbar .search-bar input::placeholder,
+.llp-top-navbar .navbar-search input::placeholder {
+	color: #CBD5E1 !important;
+}
+
+.llp-top-navbar .search-bar input:focus,
+.llp-top-navbar .navbar-search input:focus {
+	background: rgba(255, 255, 255, 0.25) !important;
+	border-color: var(--llp-nav-gold) !important;
+	box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25) !important;
+}
+
+/* Navbar Nav Links & Icons in LLP Navbar */
+.llp-top-navbar .nav-link,
+.llp-top-navbar .navbar-nav .nav-item .nav-link,
+.llp-top-navbar .llp-nav-item {
+	color: var(--llp-nav-text-muted) !important;
+	font-weight: 600 !important;
+	font-size: 0.9rem !important;
+	padding: 8px 14px !important;
+	border-radius: 6px !important;
+	display: flex !important;
+	align-items: center !important;
+	gap: 6px !important;
+	transition: all 0.2s ease !important;
+}
+
+.llp-top-navbar .nav-link:hover,
+.llp-top-navbar .navbar-nav .nav-item .nav-link:hover,
+.llp-top-navbar .llp-nav-item:hover {
+	color: var(--llp-nav-gold) !important;
+	background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.llp-top-navbar .nav-link.active,
+.llp-top-navbar .navbar-nav .nav-item.active .nav-link {
+	color: #FFFFFF !important;
+	background: rgba(255, 255, 255, 0.18) !important;
+	border-bottom: 2px solid var(--llp-nav-gold) !important;
+}
+
+/* Notification & User Profile Icons in LLP Navbar */
+.llp-top-navbar .notifications-icon {
+	color: #1E40AF !important;
+	/* Changed from white to navbar's blue */
+}
+
+/* Update general nav icons to navbar's blue */
+.llp-top-navbar .nav-link,
+.llp-top-navbar .navbar-nav .nav-item .nav-link,
+.llp-top-navbar .llp-nav-item,
+.llp-top-navbar .llp-nav-item i {
+	color: #1E40AF !important;
+}
+
+.llp-top-navbar .user-avatar,
+.llp-top-navbar .llp-nav-avatar-box,
+.llp-top-navbar .avatar,
+.llp-top-navbar .avatar-frame {
+	background-color: #FFFFFF !important;
+	border: none !important;
+	outline: none !important;
+	border-radius: 4px !important;
+	/* Changed to 4px */
+	width: 34px !important;
+	/* Matched logout button size */
+	height: 34px !important;
+	/* Matched logout button size */
+	min-width: 34px !important;
+	min-height: 34px !important;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+	color: #0F172A !important;
+	overflow: hidden !important;
+	transition: transform 0.2s ease !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+.llp-top-navbar .user-avatar:hover {
+	transform: scale(1.08) !important;
+}
+
+/* ==========================================================================
+   WEBSITE / PORTAL NAVBAR STYLING (.navbar.navbar-light)
+   ========================================================================== */
+body .navbar.navbar-light {
+	background-color: #FFFFFF !important;
+	border-bottom: 1px solid #E2E8F0 !important;
+	padding: 0 15px !important;
+}
+
+body .navbar.navbar-light .llp-nav-logo-badge {
+	background: transparent !important;
+	/* Web navbar is already white */
+	padding: 8px 0 !important;
+	box-shadow: none !important;
+}
+
+body .navbar.navbar-light .nav-link,
+body .navbar.navbar-light .nav-item>a {
+	color: #0F172A !important;
+	font-weight: 600 !important;
+}
+
+body .navbar.navbar-light .nav-link:hover,
+body .navbar.navbar-light .nav-item>a:hover {
+	color: #0072CE !important;
+}
+
+/* Web Navbar Avatar Styling */
+body .navbar.navbar-light .avatar,
+body .navbar.navbar-light .avatar-frame,
+body .navbar.navbar-light .llp-web-avatar {
+	background-color: #FFFFFF !important;
+	border: none !important;
+	outline: none !important;
+	border-radius: 4px !important;
+	width: 34px !important;
+	height: 34px !important;
+	min-width: 34px !important;
+	min-height: 34px !important;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+	color: #0F172A !important;
+	overflow: hidden !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+#page-me {
+	background: #fff !important;
+}
+
+body[frappe-session-status="logged-in"] {
+	background-color: #fff !important;
+}

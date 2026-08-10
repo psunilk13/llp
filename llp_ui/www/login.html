@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ title or "Sign in - LLP BRICKMAN" }}</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+		rel="stylesheet">
+
+	<!-- Font Awesome 6 Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+	<!-- CSRF Token Initialization -->
+	<script>
+		window.csrf_token = "{{ csrf_token }}";
+	</script>
+
+	<!-- Frappe Web Core JS Dependencies -->
+	<script type="text/javascript" src="/assets/frappe/js/lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/frappe/js/frappe-web.min.js"></script>
+
+	<!-- LLP Custom Match Stylesheet -->
+	<link rel="stylesheet" href="/assets/llp_ui/css/llp_login.css">
+</head>
+
+<body class="llp-body-standalone">
+
+	<div class="llp-viewport-container">
+		<div class="llp-card-container">
+
+			<!-- Left Column: Circular Logo & Simplified Brand Showcase -->
+			<div class="llp-brand-column">
+				<div class="brand-content-box">
+					<!-- Circular Logo Frame -->
+					<div class="circular-logo-frame">
+						<img src="/assets/llp_ui/images/logo.png" alt="BRICKMAN Logo" class="circular-logo-img">
+					</div>
+
+					<!-- Pill Badge Header -->
+					<div class="brand-pill-badge">
+						LLP AMARAVATHI BRICKS
+					</div>
+
+					<p class="brand-subtext">Quality Bricks & Building Solutions</p>
+
+					<!-- Simple Clean Feature Badges -->
+					<!-- <div class="brand-feature-stack">
+						<div class="simple-feature-chip">
+							<i class="fa-solid fa-shield-halved"></i>
+							<span>Secure Enterprise Portal</span>
+						</div>
+						<div class="simple-feature-chip">
+							<i class="fa-solid fa-industry"></i>
+							<span>Plant Operations</span>
+						</div>
+						<div class="simple-feature-chip">
+							<i class="fa-solid fa-truck-ramp-box"></i>
+							<span>Supply Chain Intelligence</span>
+						</div>
+					</div> -->
+				</div>
+			</div>
+
+			<!-- Right Column: Compact White Form -->
+			<div class="llp-form-column">
+
+				<!-- SIGN IN FORM -->
+				<section id="login-section" class="form-section active">
+					<div class="form-header-area">
+						<h1 class="form-title">Sign in</h1>
+						<p class="form-subtitle">Enter your credentials to access your
+							portal.</p>
+					</div>
+
+					<form class="form-signin" role="form">
+						{% if not disable_user_pass_login or (ldap_settings and ldap_settings.enabled) %}
+
+						<!-- E-mail Field -->
+						<div class="field-group">
+							<div class="input-box">
+								<span class="input-icon-slot"><i class="fa-solid fa-envelope"></i></span>
+								<input type="text" id="login_email" class="input-control"
+									placeholder="Add your email here" required autofocus autocomplete="username">
+							</div>
+						</div>
+
+						<!-- Password Field -->
+						<div class="field-group">
+							<div class="input-box">
+								<span class="input-icon-slot"><i class="fa-solid fa-lock"></i></span>
+								<input type="password" id="login_password" class="input-control"
+									placeholder="Add your password here" autocomplete="current-password" required>
+								<button type="button" class="btn-toggle-eye btn-toggle-password" tabindex="-1">
+									<i class="fa-solid fa-eye"></i>
+								</button>
+							</div>
+						</div>
+
+						<!-- Forgot Password Link -->
+						<div class="forgot-link-row">
+							{% if not disable_user_pass_login %}
+							<a href="#forgot" id="btn-show-forgot" class="forgot-link">Forgot password?</a>
+							{% endif %}
+						</div>
+						{% endif %}
+
+						<!-- Helper Alert Container -->
+						<div class="llp-alert-container"></div>
+
+						<!-- Primary Sign In Button -->
+						{% if not disable_user_pass_login %}
+						<button id="btn-login-submit" class="btn-primary-blue btn-login" type="submit">
+							<span>Sign in</span>
+						</button>
+						{% endif %}
+
+						{% if ldap_settings and ldap_settings.enabled %}
+						<button class="btn-secondary-ldap btn-login btn-ldap-login mt-2" type="button">
+							<i class="fa-solid fa-building-user"></i>
+							<span>Login with LDAP</span>
+						</button>
+						{% endif %}
+					</form>
+
+					<!-- Powered by Hippoclouds Attribution -->
+					<div class="llp-footer-attribution">
+						powered by <a href="http://www.hippoclouds.com" target="_blank" style="text-decoration: none; color: inherit;"><span class="hippo-text">hippo</span><span class="clouds-text">clouds</span></a>
+					</div>
+				</section>
+
+				<!-- FORGOT PASSWORD FORM -->
+				<section id="forgot-section" class="form-section">
+					<div class="form-header-area text-center">
+						<h1 class="form-title">Reset password</h1>
+						<p class="form-subtitle">Enter your registered email address to receive password reset
+							instructions.</p>
+					</div>
+
+					<form class="form-forgot" role="form">
+						<div class="field-group">
+							<div class="input-box">
+								<span class="input-icon-slot"><i class="fa-solid fa-envelope"></i></span>
+								<input type="email" id="forgot_email" class="input-control"
+									placeholder="Add your email here" required autocomplete="username">
+							</div>
+						</div>
+
+						<div class="llp-forgot-alert-container"></div>
+
+						<button id="btn-forgot-submit" class="btn-primary-blue btn-forgot mt-3" type="submit">
+							<span>Send reset link</span>
+						</button>
+
+						<!-- Back to Sign in link with extra top margin and low opacity -->
+						<div class="text-center mt-4">
+							<button type="button" id="btn-back-login" class="btn-back-link-low">
+								<i class="fa-solid fa-arrow-left"></i> Back to Sign in
+							</button>
+						</div>
+					</form>
+
+					<!-- Powered by Hippoclouds Attribution -->
+					<div class="llp-footer-attribution">
+						powered by <a href="http://www.hippoclouds.com" target="_blank" style="text-decoration: none; color: inherit;"><span class="hippo-text">hippo</span><span class="clouds-text">clouds</span></a>
+					</div>
+				</section>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Interactive Controller Script -->
+	<script src="/assets/llp_ui/js/llp_login.js"></script>
+</body>
+
+</html>

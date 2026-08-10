@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ title or "ERP Dashboard - LLP BRICKMAN" }}</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+	<!-- Font Awesome 6 Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+	<!-- Chart.js CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<!-- Frappe Web Core JS Dependencies -->
+	<script type="text/javascript" src="/assets/frappe/js/lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/frappe/js/frappe-web.min.js"></script>
+
+	<!-- LLP Custom Dashboard Stylesheet -->
+	<link rel="stylesheet" href="/assets/llp_ui/css/llp_dashboard.css">
+</head>
+<body>
+
+	<div class="llp-erp-shell">
+		
+		<!-- TOP NAVBAR -->
+		<header class="llp-erp-navbar">
+			<div class="llp-nav-left">
+				<!-- Hamburger Menu Toggle Button (Swaps to toggler icon on hover) -->
+				<button type="button" id="btn-hamburger-toggle" class="llp-hamburger-btn" title="Toggle Navigation">
+					<span class="icon-hamburger"><i class="fa-solid fa-bars"></i></span>
+					<span class="icon-toggler"><i class="fa-solid fa-angles-right"></i></span>
+				</button>
+
+				<!-- Brand Logo Box (White badge contains ONLY logo image) -->
+				<div class="llp-nav-logo-card" style="width: auto; padding: 4px 10px;">
+					<img src="/assets/llp_ui/images/logo.png" alt="AMARAVATHI BRICKS Logo" class="llp-nav-logo-img">
+				</div>
+				<!-- Brand Text OUTSIDE white logo div in pure white color -->
+				<span class="llp-desk-brand-text" style="color: #FFFFFF !important; font-weight: 800; font-family: 'Outfit', sans-serif; font-size: 1rem; margin-left: 4px;">AMARAVATHI BRICKS</span>
+
+				<!-- Search Input -->
+				<div class="llp-nav-search-box d-none d-md-block">
+					<i class="fa-solid fa-magnifying-glass"></i>
+					<input type="text" placeholder="Search modules, records...">
+				</div>
+			</div>
+
+			<div class="llp-nav-right">
+				<!-- Notification Bell Button -->
+				<button type="button" class="llp-nav-icon-btn" title="Notifications">
+					<i class="fa-solid fa-bell"></i>
+				</button>
+
+				<!-- User Badge -->
+				<div class="llp-user-badge d-none d-sm-flex">
+					<span class="llp-user-avatar-circle" style="background: #FFFFFF; color: #0F172A; font-weight: 700; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 6px;">S</span>
+					<span class="llp-user-name">{{ user_fullname or "sateesh v" }}</span>
+					<span class="llp-user-status">Active</span>
+				</div>
+
+				<!-- Logout Button -->
+				<a href="/?cmd=web_logout" class="llp-btn-logout llp-logout-trigger" title="Logout">
+					<i class="fa-solid fa-arrow-right-from-bracket"></i>
+				</a>
+			</div>
+		</header>
+
+		<!-- MAIN BODY (SIDEBAR + CONTENT AREA) -->
+		<div class="llp-erp-body">
+			
+			<!-- LEFT SIDEBAR -->
+			<aside class="llp-sidebar">
+				<a href="/dashboard" class="llp-menu-item active">
+					<i class="fa-solid fa-border-all"></i>
+					<span class="llp-menu-text">Dashboard</span>
+				</a>
+				
+				<a href="#monitoring" class="llp-menu-item">
+					<i class="fa-solid fa-chart-line"></i>
+					<span class="llp-menu-text">Monitoring Dashboard</span>
+				</a>
+				
+				<a href="#procurement" class="llp-menu-item llp-menu-dropdown">
+					<i class="fa-solid fa-location-dot"></i>
+					<span class="llp-menu-text">Procurement</span>
+					<i class="fa-solid fa-chevron-down menu-chevron"></i>
+				</a>
+				
+				<a href="#processing" class="llp-menu-item llp-menu-dropdown">
+					<i class="fa-solid fa-wrench"></i>
+					<span class="llp-menu-text">Processing</span>
+					<i class="fa-solid fa-chevron-down menu-chevron"></i>
+				</a>
+				
+				<a href="#coldstorage" class="llp-menu-item llp-menu-dropdown">
+					<i class="fa-regular fa-snowflake"></i>
+					<span class="llp-menu-text">Cold Storage</span>
+					<i class="fa-solid fa-chevron-down menu-chevron"></i>
+				</a>
+				
+				<a href="#hr" class="llp-menu-item llp-menu-dropdown">
+					<i class="fa-solid fa-users"></i>
+					<span class="llp-menu-text">Human Resources</span>
+					<i class="fa-solid fa-chevron-down menu-chevron"></i>
+				</a>
+				
+				<a href="#crm" class="llp-menu-item llp-menu-dropdown">
+					<i class="fa-solid fa-gauge-high"></i>
+					<span class="llp-menu-text">CRM</span>
+					<i class="fa-solid fa-chevron-down menu-chevron"></i>
+				</a>
+				
+				<a href="#masters" class="llp-menu-item llp-menu-dropdown">
+					<i class="fa-solid fa-list-check"></i>
+					<span class="llp-menu-text">Masters</span>
+					<i class="fa-solid fa-chevron-down menu-chevron"></i>
+				</a>
+				
+				<a href="#admin" class="llp-menu-item llp-menu-dropdown">
+					<i class="fa-solid fa-user-shield"></i>
+					<span class="llp-menu-text">Administration</span>
+					<i class="fa-solid fa-chevron-down menu-chevron"></i>
+				</a>
+				
+				<a href="#settings" class="llp-menu-item llp-menu-dropdown">
+					<i class="fa-solid fa-gear"></i>
+					<span class="llp-menu-text">App Settings</span>
+					<i class="fa-solid fa-chevron-down menu-chevron"></i>
+				</a>
+				
+				<a href="#reports" class="llp-menu-item llp-menu-dropdown">
+					<i class="fa-solid fa-file-lines"></i>
+					<span class="llp-menu-text">Reports</span>
+					<i class="fa-solid fa-chevron-down menu-chevron"></i>
+				</a>
+
+				<!-- Bottom Sidebar Logout Item -->
+				<div class="llp-sidebar-bottom">
+					<a href="/?cmd=web_logout" class="llp-menu-item llp-sidebar-logout-item llp-logout-trigger" title="Logout">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i>
+						<span class="llp-menu-text">Logout</span>
+					</a>
+				</div>
+			</aside>
+
+			<!-- MAIN CONTENT AREA -->
+			<main class="llp-content-area">
+				<!-- Header Banner -->
+				<div class="dashboard-header">
+					<h1 class="dashboard-title">Welcome back, {{ user_fullname or "sateesh v" }}!</h1>
+					<p class="dashboard-subtitle">Live ERP snapshot — finance, HR, CRM, plant & stock.</p>
+				</div>
+
+				<!-- Overview Tabs -->
+				<div class="llp-tabs-bar">
+					<button class="llp-tab-btn active">Overview</button>
+					<button class="llp-tab-btn">HRMS</button>
+					<button class="llp-tab-btn">CRM</button>
+					<button class="llp-tab-btn">Processing</button>
+					<button class="llp-tab-btn">Procurement</button>
+					<button class="llp-tab-btn">Stocks & Inventory</button>
+				</div>
+
+				<!-- Top Metric Cards Row -->
+				<div class="llp-metrics-grid">
+					<div class="metric-card">
+						<div class="metric-icon-box metric-icon-blue">
+							<i class="fa-solid fa-users"></i>
+						</div>
+						<div>
+							<div class="metric-label">Active employees</div>
+							<div class="metric-value">585</div>
+						</div>
+					</div>
+
+					<div class="metric-card">
+						<div class="metric-icon-box metric-icon-amber">
+							<i class="fa-regular fa-calendar"></i>
+						</div>
+						<div>
+							<div class="metric-label">Open leave requests</div>
+							<div class="metric-value">0</div>
+						</div>
+					</div>
+
+					<div class="metric-card">
+						<div class="metric-icon-box metric-icon-green">
+							<i class="fa-solid fa-shapes"></i>
+						</div>
+						<div>
+							<div class="metric-label">Active products</div>
+							<div class="metric-value">1</div>
+						</div>
+					</div>
+
+					<div class="metric-card">
+						<div class="metric-icon-box metric-icon-blue">
+							<i class="fa-solid fa-warehouse"></i>
+						</div>
+						<div>
+							<div class="metric-label">Warehouses</div>
+							<div class="metric-value">4</div>
+						</div>
+					</div>
+
+					<div class="metric-card">
+						<div class="metric-icon-box metric-icon-red">
+							<i class="fa-solid fa-briefcase"></i>
+						</div>
+						<div>
+							<div class="metric-label">New CRM leads</div>
+							<div class="metric-value">0</div>
+						</div>
+					</div>
+
+					<div class="metric-card">
+						<div class="metric-icon-box metric-icon-purple">
+							<i class="fa-solid fa-money-check-dollar"></i>
+						</div>
+						<div>
+							<div class="metric-label">Draft payroll runs</div>
+							<div class="metric-value">1</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Charts Grid -->
+				<div class="llp-charts-grid">
+					<div class="chart-card">
+						<div class="chart-title">Revenue vs expenses (6 months)</div>
+						<canvas id="chartRevenue" height="140"></canvas>
+					</div>
+
+					<div class="chart-card">
+						<div class="chart-title">Inventory mix</div>
+						<canvas id="chartInventory" height="140"></canvas>
+					</div>
+				</div>
+			</main>
+
+		</div>
+	</div>
+
+	<!-- Sidebar Controller Script -->
+	<script src="/assets/llp_ui/js/sidebar.js"></script>
+
+	<!-- Chart Initialization Script -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Revenue vs Expenses Line Chart
+			const ctxRev = document.getElementById('chartRevenue');
+			if (ctxRev) {
+				new Chart(ctxRev, {
+					type: 'line',
+					data: {
+						labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+						datasets: [{
+							label: 'Revenue',
+							data: [12, 19, 15, 25, 22, 30],
+							borderColor: '#0072CE',
+							backgroundColor: 'rgba(0, 114, 206, 0.1)',
+							fill: true,
+							tension: 0.4
+						}, {
+							label: 'Expenses',
+							data: [8, 12, 10, 18, 16, 20],
+							borderColor: '#EF4444',
+							backgroundColor: 'rgba(239, 68, 68, 0.1)',
+							fill: true,
+							tension: 0.4
+						}]
+					},
+					options: {
+						responsive: true,
+						plugins: { legend: { position: 'bottom' } }
+					}
+				});
+			}
+
+			// Inventory Mix Doughnut Chart
+			const ctxInv = document.getElementById('chartInventory');
+			if (ctxInv) {
+				new Chart(ctxInv, {
+					type: 'doughnut',
+					data: {
+						labels: ['Bricks', 'Blocks', 'Raw Clay', 'Cement'],
+						datasets: [{
+							data: [45, 25, 20, 10],
+							backgroundColor: ['#0072CE', '#F59E0B', '#10B981', '#6366F1']
+						}]
+					},
+					options: {
+						responsive: true,
+						plugins: { legend: { position: 'bottom' } }
+					}
+				});
+			}
+		});
+	</script>
+</body>
+</html>
