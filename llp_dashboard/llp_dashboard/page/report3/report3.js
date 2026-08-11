@@ -5,39 +5,32 @@ frappe.pages['report3'].on_page_load = function(wrapper) {
         single_column: true
     });
 
-    // Inject CSS for custom filters, dropdown, table layout, and download button
+    // Inject Modern SaaS UI Styles
     $('<style>').prop('type', 'text/css').html(`
         .page-content {
-            padding: 15px;
+            padding: 20px;
+            background-color: #f8fafc;
+            min-height: calc(100vh - 100px);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        #pivot-production-table th {
-            background-color: #f4f5f7;
-            text-align: center;
-            vertical-align: middle;
-        }
-        .sub-item-badge {
-            display: inline-block;
-            background: #e2e8f0;
-            padding: 3px 8px;
-            margin: 2px;
-            border-radius: 4px;
-            font-size: 12px;
-        }
+        
+        /* Modern Filter Card */
         .custom-filter-container {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             align-items: flex-end;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 6px;
-            border: 1px solid #d1d8dd;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
             justify-content: space-between;
         }
         .filter-inputs-group {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             align-items: flex-end;
             flex-wrap: wrap;
         }
@@ -46,76 +39,136 @@ frappe.pages['report3'].on_page_load = function(wrapper) {
             flex-direction: column;
         }
         .custom-filter-group label {
-            font-size: 12px;
-            color: #515862;
-            margin-bottom: 5px;
-            font-weight: 500;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            margin-bottom: 6px;
+            font-weight: 600;
         }
         .custom-date-input {
-            background: #fff;
-            border: 1px solid #d1d8dd;
-            padding: 6px 10px;
-            border-radius: 4px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            border-radius: 6px;
             font-size: 13px;
-            color: #36414c;
+            color: #1e293b;
             width: 160px;
+            transition: all 0.2s ease;
         }
+        .custom-date-input:focus {
+            border-color: #3b82f6;
+            background: #fff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        /* Dropdown Styling */
         .custom-multiselect-dropdown {
             position: relative;
             display: inline-block;
         }
         .custom-dropdown-btn {
-            background: #fff;
-            border: 1px solid #d1d8dd;
-            padding: 6px 12px;
-            border-radius: 4px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 8px 14px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 13px;
-            min-width: 220px;
+            min-width: 240px;
             text-align: left;
-            color: #36414c;
+            color: #1e293b;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .custom-dropdown-btn:hover {
+            background: #f1f5f9;
         }
         .custom-dropdown-content {
             display: none;
             position: absolute;
             background-color: #fff;
-            min-width: 250px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
+            min-width: 260px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             padding: 12px;
-            border-radius: 4px;
-            border: 1px solid #d1d8dd;
-            max-height: 250px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            max-height: 260px;
             overflow-y: auto;
-            top: 100%;
+            top: calc(100% + 4px);
             left: 0;
-            margin-top: 2px;
         }
         .custom-dropdown-content label {
-            display: block;
+            display: flex;
+            align-items: center;
             font-weight: normal;
             margin-bottom: 8px;
             cursor: pointer;
+            color: #334155;
+            font-size: 13px;
         }
         .custom-dropdown-content input {
-            margin-right: 8px;
+            margin-right: 10px;
+            accent-color: #3b82f6;
+            width: 15px;
+            height: 15px;
         }
+
+        /* Excel Download Button */
         .btn-excel-download {
-            background-color: #28a745;
+            background-color: #10b981;
             color: #fff;
-            border: 1px solid #218838;
-            padding: 6px 15px;
-            border-radius: 4px;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 6px;
             font-size: 13px;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            transition: background-color 0.2s ease;
         }
         .btn-excel-download:hover {
-            background-color: #218838;
-            color: #fff;
+            background-color: #059669;
+        }
+
+        /* Modern Table Card */
+        .table-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+        #pivot-production-table {
+            margin-bottom: 0;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #pivot-production-table th {
+            background-color: #f1f5f9;
+            color: #475569;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: center;
+            vertical-align: middle;
+        }
+        #pivot-production-table td {
+            padding: 12px 16px;
+            color: #334155;
+            font-size: 13px;
+            vertical-align: middle;
+            border-top: 1px solid #f1f5f9;
+        }
+        #pivot-production-table tbody tr:hover {
+            background-color: #f8fafc;
         }
     `).appendTo('head');
 
@@ -149,23 +202,22 @@ frappe.pages['report3'].on_page_load = function(wrapper) {
 
                 <div class="custom-filter-group" style="justify-content: flex-end;">
                     <button type="button" id="btn-download-excel" class="btn-excel-download">
-                        <i class="fa fa-file-excel-o"></i> Download Excel
+                        <i class="fa fa-file-excel-o"></i> Export Excel
                     </button>
                 </div>
             </div>
             
-            <div class="panel panel-default">
-                <div class="panel-body" style="overflow-x: auto;">
-                    <table class="table table-bordered table-hover" id="pivot-production-table">
+            <div class="table-card">
+                <div style="overflow-x: auto;">
+                    <table class="table table-hover" id="pivot-production-table">
                         <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>Production ID</th>
-                                <th>Batch Qty</th>
-                                <th>Leakage Box</th>
                                 <th>No Of Batches</th>
                                 <th>Cubic Meters</th>
-                                <th>Plates</th>
+                                <th id="th-no-of-boxes">No Of Boxes</th>
+                                <th id="th-leakage-box">Leakage Box</th>
+                                <th id="th-plates">Plates</th>
                                 <th>Brick Sizes & Produced Bricks</th>
                                 <th>Items & Quantities</th>
                             </tr>
@@ -222,6 +274,7 @@ frappe.pages['report3'].on_page_load = function(wrapper) {
 
                 $('.item-group-checkbox').on('change', function() {
                     update_dropdown_button_text();
+                    adjust_columns_visibility();
                     load_pivot_data();
                 });
             } else {
@@ -242,6 +295,50 @@ function update_dropdown_button_text() {
         btn.text(checked_boxes.val());
     } else {
         btn.text(checked_boxes.length + ' Item Groups Selected');
+    }
+}
+
+function adjust_columns_visibility() {
+    let selected_groups = [];
+    $('.item-group-checkbox:checked').each(function() {
+        selected_groups.push($(this).val().toLowerCase());
+    });
+
+    let total_checked = selected_groups.length;
+    let has_aac = selected_groups.includes('aac blocks');
+    let has_solid = selected_groups.includes('solid blocks');
+
+    if (total_checked === 0) {
+        // No filter set -> Default: Show all columns
+        $('#th-no-of-boxes').show();
+        $('#th-leakage-box').show();
+        $('#th-plates').show();
+        $('.col-no-of-boxes').show();
+        $('.col-leakage-box').show();
+        $('.col-plates').show();
+        return;
+    }
+
+    // AAC columns visibility (No Of Boxes & Leakage Box)
+    if (has_aac) {
+        $('#th-no-of-boxes').show();
+        $('#th-leakage-box').show();
+        $('.col-no-of-boxes').show();
+        $('.col-leakage-box').show();
+    } else {
+        $('#th-no-of-boxes').hide();
+        $('#th-leakage-box').hide();
+        $('.col-no-of-boxes').hide();
+        $('.col-leakage-box').hide();
+    }
+
+    // Solid columns visibility (Plates)
+    if (has_solid) {
+        $('#th-plates').show();
+        $('.col-plates').show();
+    } else {
+        $('#th-plates').hide();
+        $('.col-plates').hide();
     }
 }
 
@@ -267,7 +364,7 @@ function load_pivot_data() {
                 tbody.empty();
 
                 if (r.message.length === 0) {
-                    tbody.append(`<tr><td colspan="9" class="text-center text-muted">No records found for the selected filters.</td></tr>`);
+                    tbody.append(`<tr><td colspan="8" class="text-center text-muted" style="padding: 40px;">No records found for the selected filters.</td></tr>`);
                     return;
                 }
 
@@ -277,22 +374,24 @@ function load_pivot_data() {
                         : '-';
 
                     let itemsHtml = row.items && row.items.length > 0 
-                        ? row.items.map(i => `${i.item_code}: ${i.quantity}`).join('<br style="mso-data-placement:same-cell;">') 
+                        ? row.items.map(i => `${i.item_code}: ${i.quantity} ${i.uom ? i.uom : ''}`).join('<br style="mso-data-placement:same-cell;">') 
                         : '-';
 
                     let tr = `<tr>
-                        <td>${row.date}</td>
-                        <td><b>${row.name}</b></td>
-                        <td>${row.batch_quantity}</td>
-                        <td>${row.leakage_box}</td>
-                        <td>${row.no_of_batches}</td>
-                        <td>${row.cubic_meters}</td>
-                        <td>${row.plates}</td>
+                        <td style="text-align: center;">${row.date}</td>
+                        <td style="text-align: center;">${row.no_of_batches}</td>
+                        <td style="text-align: center;">${row.cubic_meters}</td>
+                        <td style="text-align: center;" class="col-no-of-boxes">${row.no_of_boxes}</td>
+                        <td style="text-align: center;" class="col-leakage-box">${row.leakage_box}</td>
+                        <td style="text-align: center;" class="col-plates">${row.plates}</td>
                         <td style="white-space: pre-line;">${brickSizesHtml}</td>
                         <td style="white-space: pre-line;">${itemsHtml}</td>
                     </tr>`;
                     tbody.append(tr);
                 });
+
+                // Re-apply visibility based on current selections after data render
+                adjust_columns_visibility();
             }
         }
     });
@@ -327,12 +426,12 @@ function download_table_as_excel() {
             <![endif]-->
             <style>
                 table { border-collapse: collapse; width: 100%; }
-                th, td { border: 0.5pt solid #d1d8dd; padding: 8px; text-align: left; font-family: Arial, sans-serif; font-size: 11pt; vertical-align: top; mso-data-placement: same-cell; }
-                th { background-color: #f4f5f7; font-weight: bold; text-align: center; }
+                th, td { border: 0.5pt solid #cbd5e1; padding: 10px; text-align: left; font-family: Arial, sans-serif; font-size: 11pt; vertical-align: top; mso-data-placement: same-cell; }
+                th { background-color: #f1f5f9; font-weight: bold; text-align: center; }
             </style>
         </head>
         <body>
-            <h3>Brick Production Pivot Summary</h3>
+            <h3 style="font-family: Arial, sans-serif; color: #1e293b;">Brick Production Pivot Summary</h3>
             ${html_content}
         </body>
         </html>
