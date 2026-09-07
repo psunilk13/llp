@@ -19,7 +19,7 @@ class CustomSalesInvoice(SalesInvoice):
 
         fy = f"{start_year}-{end_year}"
 
-        prefix = f"SAIILLP/{fy}/"
+        prefix = f"SAIIL/{fy}/"
 
         # Query to fetch the last generated invoice number for the current FY
         last = frappe.db.sql("""
