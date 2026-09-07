@@ -136,6 +136,10 @@ app_include_js = [
 # 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
+override_doctype_class = {
+    "Sales Invoice": "llp_dashboard.llp_dashboard.delivery_note.CustomSalesInvoice"
+	}
+
 # Document Events
 # ---------------
 # Hook on document methods and events
