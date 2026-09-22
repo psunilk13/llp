@@ -157,52 +157,108 @@ body .navbar-home {
 	color: #FFFFFF !important;
 }
 
-/* Hide stray breadcrumbs when inside the navbar */
-body .navbar>#navbar-breadcrumbs,
-body .navbar>.navbar-breadcrumbs {
-	display: none !important;
+/* Breadcrumbs in Navbar (order: 2) - Frappe standard breadcrumb white styling & arrow SVGs */
+body .navbar #navbar-breadcrumbs,
+body .navbar .navbar-breadcrumbs {
+	order: 2 !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	margin-left: 12px !important;
+	margin-right: 12px !important;
+	list-style: none !important;
+	padding: 0 !important;
+	--right-arrow-svg: url("data:image/svg+xml;utf8,<svg width='6' height='8' viewBox='0 0 6 8' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1.25 7.5L4.75 4L1.25 0.5' stroke='white' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
 }
 
-/* Search Bar & Awesomplete in Navbar (order: 3) - Flex-start magnifying icon slightly right */
-body .navbar .search-bar,
-body .navbar .awesomplete {
+body .navbar #navbar-breadcrumbs *,
+body .navbar .navbar-breadcrumbs *,
+body .navbar #navbar-breadcrumbs a,
+body .navbar .navbar-breadcrumbs a,
+body .navbar #navbar-breadcrumbs span,
+body .navbar .navbar-breadcrumbs span,
+body .navbar #navbar-breadcrumbs li,
+body .navbar .navbar-breadcrumbs li {
+	color: #FFFFFF !important;
+	font-weight: 700 !important;
+	font-size: 0.92rem !important;
+	letter-spacing: 0.2px !important;
+	text-decoration: none !important;
+}
+
+body .navbar #navbar-breadcrumbs a::before,
+body .navbar .navbar-breadcrumbs a::before,
+body .navbar #navbar-breadcrumbs li::before,
+body .navbar .navbar-breadcrumbs li::before,
+body .navbar #navbar-breadcrumbs li+li::before,
+body .navbar .navbar-breadcrumbs li+li::before,
+body .navbar #navbar-breadcrumbs svg,
+body .navbar .navbar-breadcrumbs svg,
+body .navbar #navbar-breadcrumbs use,
+body .navbar .navbar-breadcrumbs use {
+	color: #FFFFFF !important;
+	fill: #FFFFFF !important;
+	stroke: #FFFFFF !important;
+	filter: brightness(0) invert(1) !important;
+}
+
+body .navbar #navbar-breadcrumbs a:hover,
+body .navbar .navbar-breadcrumbs a:hover {
+	color: #E2E8F0 !important;
+	text-decoration: underline !important;
+}
+
+/* Search Bar & Awesomplete in Navbar (order: 3) - Start of search element icon alignment */
+body .navbar .search-bar {
 	order: 3 !important;
 	position: relative !important;
-	margin-left: 4px !important;
+	margin-left: 8px !important;
 	margin-right: 12px !important;
 	display: flex !important;
 	align-items: center !important;
+	max-width: 320px !important;
 }
 
-body .navbar .search-bar .search-icon,
-.llp-fa-search-icon {
+body .navbar .search-bar .search-icon {
 	position: absolute !important;
-	left: 14px !important;
-	/* Flex-start slightly right */
+	left: 12px !important;
 	top: 50% !important;
 	transform: translateY(-50%) !important;
-	color: #FFFFFF !important;
-	font-size: 0.95rem !important;
+	color: #6B7280 !important;
+	fill: #6B7280 !important;
+	font-size: 0.9rem !important;
 	pointer-events: none !important;
 	z-index: 10 !important;
 	display: flex !important;
 	align-items: center !important;
 	justify-content: center !important;
+	margin: 0 !important;
+	height: auto !important;
 }
 
-body .navbar .search-bar input,
-body .navbar .awesomplete input {
-	background: rgba(255, 255, 255, 0.15) !important;
-	border: 1px solid rgba(255, 255, 255, 0.25) !important;
-	color: #FFFFFF !important;
+body .navbar .search-bar .search-icon i,
+body .navbar .search-bar .search-icon svg {
+	color: #6B7280 !important;
+	fill: #6B7280 !important;
+	font-size: 0.9rem !important;
+}
+
+body .navbar .search-bar .awesomplete,
+body .navbar .search-bar input#navbar-search {
+	width: 100% !important;
+}
+
+body .navbar .search-bar input {
+	background: #FFFFFF !important;
+	border: 1px solid #D1D5DB !important;
+	color: #1F2937 !important;
 	border-radius: 8px !important;
 	font-size: 0.88rem !important;
-	padding-left: 40px !important;
+	padding-left: 36px !important;
+	height: 32px !important;
 }
 
-body .navbar .search-bar input::placeholder,
-body .navbar .awesomplete input::placeholder {
-	color: #B0C4DE !important;
+body .navbar .search-bar input::placeholder {
+	color: #6B7280 !important;
 }
 
 /* Navbar Right Control Items (order: 4) */
@@ -637,31 +693,31 @@ body .layout-side-section .list-group-by-fields .list-sidebar-button:hover {
 
 /* Sidebar Dropdown Menus (Filter By, Assigned To, Tags) */
 body .layout-side-section .dropdown-menu,
-body > .dropdown-menu.list-stats-dropdown,
-body > .dropdown-menu.group-by-dropdown {
+body>.dropdown-menu.list-stats-dropdown,
+body>.dropdown-menu.group-by-dropdown {
 	background-color: #FFFFFF !important;
 	border: 1px solid #E2E8F0 !important;
 	border-radius: 8px !important;
-	box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* All text inside the dropdown should be dark */
 body .layout-side-section .dropdown-menu,
 body .layout-side-section .dropdown-menu *,
-body > .dropdown-menu.list-stats-dropdown,
-body > .dropdown-menu.list-stats-dropdown *,
-body > .dropdown-menu.group-by-dropdown,
-body > .dropdown-menu.group-by-dropdown * {
+body>.dropdown-menu.list-stats-dropdown,
+body>.dropdown-menu.list-stats-dropdown *,
+body>.dropdown-menu.group-by-dropdown,
+body>.dropdown-menu.group-by-dropdown * {
 	color: #1A202C !important;
 }
 
 /* Fix the search input inside the sidebar dropdowns */
 body .layout-side-section .dropdown-menu .dropdown-search .form-control,
 body .layout-side-section .dropdown-menu input,
-body > .dropdown-menu.list-stats-dropdown .dropdown-search .form-control,
-body > .dropdown-menu.list-stats-dropdown input,
-body > .dropdown-menu.group-by-dropdown .dropdown-search .form-control,
-body > .dropdown-menu.group-by-dropdown input {
+body>.dropdown-menu.list-stats-dropdown .dropdown-search .form-control,
+body>.dropdown-menu.list-stats-dropdown input,
+body>.dropdown-menu.group-by-dropdown .dropdown-search .form-control,
+body>.dropdown-menu.group-by-dropdown input {
 	background-color: #F8FAFC !important;
 	border: 1px solid #CBD5E1 !important;
 	color: #1A202C !important;
@@ -671,18 +727,18 @@ body > .dropdown-menu.group-by-dropdown input {
 
 body .layout-side-section .dropdown-menu .dropdown-search .form-control:focus,
 body .layout-side-section .dropdown-menu input:focus,
-body > .dropdown-menu.list-stats-dropdown .dropdown-search .form-control:focus,
-body > .dropdown-menu.list-stats-dropdown input:focus,
-body > .dropdown-menu.group-by-dropdown .dropdown-search .form-control:focus,
-body > .dropdown-menu.group-by-dropdown input:focus {
+body>.dropdown-menu.list-stats-dropdown .dropdown-search .form-control:focus,
+body>.dropdown-menu.list-stats-dropdown input:focus,
+body>.dropdown-menu.group-by-dropdown .dropdown-search .form-control:focus,
+body>.dropdown-menu.group-by-dropdown input:focus {
 	border-color: #0072CE !important;
 	box-shadow: 0 0 0 3px rgba(0, 114, 206, 0.15) !important;
 	outline: none !important;
 }
 
 body .layout-side-section .dropdown-menu input::placeholder,
-body > .dropdown-menu.list-stats-dropdown input::placeholder,
-body > .dropdown-menu.group-by-dropdown input::placeholder {
+body>.dropdown-menu.list-stats-dropdown input::placeholder,
+body>.dropdown-menu.group-by-dropdown input::placeholder {
 	color: #94A3B8 !important;
 }
 
@@ -690,12 +746,12 @@ body > .dropdown-menu.group-by-dropdown input::placeholder {
 body .layout-side-section .dropdown-menu .dropdown-item:hover,
 body .layout-side-section .dropdown-menu a:hover,
 body .layout-side-section .dropdown-menu .stat-link:hover,
-body > .dropdown-menu.list-stats-dropdown .dropdown-item:hover,
-body > .dropdown-menu.list-stats-dropdown a:hover,
-body > .dropdown-menu.list-stats-dropdown .stat-link:hover,
-body > .dropdown-menu.group-by-dropdown .dropdown-item:hover,
-body > .dropdown-menu.group-by-dropdown a:hover,
-body > .dropdown-menu.group-by-dropdown .stat-link:hover {
+body>.dropdown-menu.list-stats-dropdown .dropdown-item:hover,
+body>.dropdown-menu.list-stats-dropdown a:hover,
+body>.dropdown-menu.list-stats-dropdown .stat-link:hover,
+body>.dropdown-menu.group-by-dropdown .dropdown-item:hover,
+body>.dropdown-menu.group-by-dropdown a:hover,
+body>.dropdown-menu.group-by-dropdown .stat-link:hover {
 	background-color: #F1F5F9 !important;
 	color: #0072CE !important;
 }
@@ -703,12 +759,12 @@ body > .dropdown-menu.group-by-dropdown .stat-link:hover {
 body .layout-side-section .dropdown-menu .dropdown-item:hover *,
 body .layout-side-section .dropdown-menu a:hover *,
 body .layout-side-section .dropdown-menu .stat-link:hover *,
-body > .dropdown-menu.list-stats-dropdown .dropdown-item:hover *,
-body > .dropdown-menu.list-stats-dropdown a:hover *,
-body > .dropdown-menu.list-stats-dropdown .stat-link:hover *,
-body > .dropdown-menu.group-by-dropdown .dropdown-item:hover *,
-body > .dropdown-menu.group-by-dropdown a:hover *,
-body > .dropdown-menu.group-by-dropdown .stat-link:hover * {
+body>.dropdown-menu.list-stats-dropdown .dropdown-item:hover *,
+body>.dropdown-menu.list-stats-dropdown a:hover *,
+body>.dropdown-menu.list-stats-dropdown .stat-link:hover *,
+body>.dropdown-menu.group-by-dropdown .dropdown-item:hover *,
+body>.dropdown-menu.group-by-dropdown a:hover *,
+body>.dropdown-menu.group-by-dropdown .stat-link:hover * {
 	color: #0072CE !important;
 }
 
@@ -780,37 +836,10 @@ body .page-head .page-actions {
 	flex-wrap: nowrap !important;
 }
 
-/* Breadcrumbs in a single row on the left */
+/* Page actions breadcrumbs reset / hidden from page actions */
 body .page-head .page-actions .navbar-breadcrumbs,
 body .page-head .page-actions #navbar-breadcrumbs {
-	display: inline-flex !important;
-	visibility: visible !important;
-	margin-right: auto !important;
-	/* Pushes buttons to the right */
-	align-items: center !important;
-	padding: 0 !important;
-	flex-wrap: nowrap !important;
-	flex-direction: row !important;
-	list-style: none !important;
-}
-
-body .page-head .page-actions .navbar-breadcrumbs li {
-	display: inline-flex !important;
-	align-items: center !important;
-	white-space: nowrap !important;
-}
-
-body .page-head .page-actions .navbar-breadcrumbs *,
-body .page-head .page-actions #navbar-breadcrumbs *,
-body .page-head .page-actions .navbar-breadcrumbs a,
-body .page-head .page-actions #navbar-breadcrumbs a,
-body .page-head .page-actions .navbar-breadcrumbs span,
-body .page-head .page-actions #navbar-breadcrumbs span {
-	color: #0072CE !important;
-	/* Bold, vibrant blue */
-	font-weight: 600 !important;
-	font-size: 0.95rem !important;
-	text-decoration: none !important;
+	display: none !important;
 }
 
 /* Shrink page-head-content height when title is hidden */
@@ -1122,22 +1151,34 @@ body .ce-header * {
 	/* Navbar deep blue */
 }
 
-/* Apply styling specifically to Shortcut Cards and Individual Link Items */
+/* Apply styling specifically to Shortcut Cards, Widget Boxes, and Link Items */
 body .desk-page .shortcut-widget-box,
 body .workspace-page .shortcut-widget-box,
+body .desk-page .widget-box,
+body .workspace-page .widget-box,
 body .desk-page .links-widget-box .link-item,
 body .workspace-page .links-widget-box .link-item {
 	position: relative;
 	overflow: hidden;
-	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5) !important;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15) !important;
 	border-radius: 4px !important;
 	background-color: #FFFFFF !important;
-	/* border: 1px solid rgba(0, 114, 206, 0.05) !important; */
 	padding: 6px 10px !important;
-	/* Increased height via padding */
 	min-height: 30px !important;
-	transition: transform 700ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 1s cubic-bezier(0.4, 0, 0.2, 1), background-color 1s ease !important;
+	transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease !important;
+	transform: none !important;
 	z-index: 1;
+}
+
+/* Disable slider animation completely */
+body .desk-page .shortcut-widget-box::before,
+body .workspace-page .shortcut-widget-box::before,
+body .desk-page .widget-box::before,
+body .workspace-page .widget-box::before,
+body .desk-page .links-widget-box .link-item::before,
+body .workspace-page .links-widget-box .link-item::before {
+	display: none !important;
+	content: none !important;
 }
 
 /* Ensure link items behave like blocks so padding works */
@@ -1148,52 +1189,53 @@ body .workspace-page .links-widget-box .link-item {
 	margin-bottom: 8px !important;
 }
 
-/* Base text and icon colors */
+/* Base text and icon transition */
 body .desk-page .shortcut-widget-box *,
 body .workspace-page .shortcut-widget-box *,
+body .desk-page .widget-box *,
+body .workspace-page .widget-box *,
 body .desk-page .links-widget-box .link-item *,
 body .workspace-page .links-widget-box .link-item * {
-	transition: color 1s cubic-bezier(0.4, 0, 0.2, 1), fill 0.2s ease-out, stroke 0.2s ease-out !important;
+	transition: color 0.3s ease, fill 0.3s ease, stroke 0.3s ease !important;
 }
 
-/* The sweeping highlight overlay */
-body .desk-page .shortcut-widget-box::before,
-body .workspace-page .shortcut-widget-box::before,
-body .desk-page .links-widget-box .link-item::before,
-body .workspace-page .links-widget-box .link-item::before {
-	content: "";
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	/* Deep Navbar Blue Gradient */
-	background: linear-gradient(60deg, #031835, #0072CE, #031835);
-	transform: translateX(-100%);
-	transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-	z-index: -1;
-	pointer-events: none;
+/* Increase SVG icon stroke width & size for shortcut widgets */
+body .desk-page .shortcut-widget-box svg,
+body .workspace-page .shortcut-widget-box svg,
+body .desk-page .widget-box svg,
+body .workspace-page .widget-box svg,
+body .desk-page .links-widget-box .link-item svg,
+body .workspace-page .links-widget-box .link-item svg,
+body .desk-page .shortcut-widget-box .icon,
+body .workspace-page .shortcut-widget-box .icon,
+body .desk-page .widget-box .icon,
+body .workspace-page .widget-box .icon,
+body .desk-page .links-widget-box .link-item .icon,
+body .workspace-page .links-widget-box .link-item .icon {
+	/* stroke-width: 1.5px !important; */
+	width: 18px !important;
+	height: 18px !important;
+	min-width: 18px !important;
 }
 
-/* Hover effects */
+/* Direct fade in/fade out hover effect with #949494 background & NO slider */
 body .desk-page .shortcut-widget-box:hover,
 body .workspace-page .shortcut-widget-box:hover,
+body .desk-page .widget-box:hover,
+body .workspace-page .widget-box:hover,
 body .desk-page .links-widget-box .link-item:hover,
 body .workspace-page .links-widget-box .link-item:hover {
-	box-shadow: 0px 8px 24px rgba(3, 24, 53, 0.25) !important;
-	transform: translateY(-3px) !important;
+	background-color: #949494 !important;
+	background: #949494 !important;
+	transform: none !important;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
-body .desk-page .shortcut-widget-box:hover::before,
-body .workspace-page .shortcut-widget-box:hover::before,
-body .desk-page .links-widget-box .link-item:hover::before,
-body .workspace-page .links-widget-box .link-item:hover::before {
-	transform: translateX(0);
-}
-
-/* Change text and SVGs to white on hover */
+/* Direct fade to white text and SVG icons on hover */
 body .desk-page .shortcut-widget-box:hover *,
 body .workspace-page .shortcut-widget-box:hover *,
+body .desk-page .widget-box:hover *,
+body .workspace-page .widget-box:hover *,
 body .desk-page .links-widget-box .link-item:hover *,
 body .workspace-page .links-widget-box .link-item:hover * {
 	color: #FFFFFF !important;
@@ -1235,6 +1277,8 @@ body .desk-page .links-widget-box .link-item:hover .badge *,
 body .workspace-page .links-widget-box .link-item:hover .badge * {
 	color: #031835 !important;
 }
+
+
 
 /* Ensure the main links widget box itself doesn't have the old widget styling since we styled the links inside it */
 body .desk-page .ce-block__content .links-widget-box,
