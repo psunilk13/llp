@@ -415,16 +415,17 @@
 			`);
 		}
 
-		// 3. Search Icon replacement directly INSIDE Awesomplete & Search Bar container
-		const $searchBar = $navbar.find(".search-bar, .awesomplete");
+		// 3. Search Icon replacement directly INSIDE Search Bar container
+		const $searchBar = $navbar.find(".search-bar").first();
 		if ($searchBar.length) {
 			$searchBar.css("position", "relative");
-			const $nativeIcon = $searchBar.find(".search-icon");
-			if ($nativeIcon.length) {
-				$nativeIcon.html('<i class="fa-solid fa-magnifying-glass"></i>').show();
-			} else if (!$searchBar.find(".llp-fa-search-icon").length) {
-				$searchBar.prepend('<i class="fa-solid fa-magnifying-glass llp-fa-search-icon"></i>');
+			let $searchIcon = $searchBar.find(".search-icon");
+			if (!$searchIcon.length) {
+				$searchBar.prepend('<span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>');
+			} else {
+				$searchIcon.html('<i class="fa-solid fa-magnifying-glass"></i>').show();
 			}
+			$searchBar.find(".llp-fa-search-icon").not($searchIcon.find(".fa-magnifying-glass")).remove();
 		}
 
 		// 4. Notifications icon replacement with FontAwesome Bell
@@ -481,8 +482,14 @@
 		var $breadcrumbs = $("#navbar-breadcrumbs, .navbar-breadcrumbs");
 		if ($breadcrumbs.length) {
 			$breadcrumbs.removeClass("d-none d-sm-flex hide hidden");
-			if (!$pageActions.find("#navbar-breadcrumbs, .navbar-breadcrumbs").length) {
-				$pageActions.prepend($breadcrumbs);
+			var $navbar = $(".navbar, header.navbar");
+			if ($navbar.length && !$navbar.find("#navbar-breadcrumbs, .navbar-breadcrumbs").length) {
+				var $brand = $navbar.find(".navbar-brand, .llp-desk-brand-text").first();
+				if ($brand.length) {
+					$brand.after($breadcrumbs);
+				} else {
+					$navbar.prepend($breadcrumbs);
+				}
 			}
 		}
 
